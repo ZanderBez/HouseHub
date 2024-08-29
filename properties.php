@@ -101,7 +101,7 @@ $result = mysqli_query($con, $sql);
                         <option value="" selected>PROPERTY TYPE</option>
                         <option value="House">House</option>
                         <option value="Apartment">Apartment</option>
-                        <option value="Townhouse">Townhouse</option>
+                        <option value="Farm">Farm</option>
                     </select>
                 </div>
                 <div class="col-md-2">
