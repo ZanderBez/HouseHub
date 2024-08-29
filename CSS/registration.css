@@ -1,0 +1,127 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #1B1B1B;
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+h1,h2,h5{
+    font-family: "Syne", sans-serif;
+}
+
+p,h3,a {
+    font-family: "Lora", serif;
+}
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    height: 70vh;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Left Section*/
+.left-section {
+    width: 50%;
+    padding: 50px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.sign-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.sign-logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Form Styling */
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 4px;
+    background-color: #FF9F47;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.btn-primary:hover {
+    background-color: #E6893C;
+}
+
+/* Right Section*/
+.right-section {
+    background-image: url('../assets/AdobeStock_302115665.jpeg');
+    background-size: cover;
+    background-position: center;
+    width: 50%;
+    height: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center; 
+}
+
+.right-section h1 {
+    margin-top: 275px;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.right-section p {
+    font-size: 18px;
+}
+
+.overlay{
+    width: 100%;
+    height: 70vh;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+.text-1 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.left-section p {
+    text-align: center;
+}
+
+.left-section a {
+    color: #FF9F47;
+    text-decoration: none;
+}
+
+.left-section a:hover {
+    text-decoration: underline;
+}
