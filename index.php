@@ -30,9 +30,9 @@ $result = mysqli_query($con, $sql);
         <div class="nav-logo"></div>
         <div class="nav-center">
             <ul>
-                <li><a href="#">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="properties.php">Properties</a></li>
-                <li><a href="#">Sell</a></li>
+                <li><a href="sell.php">Sell</a></li>
                 <li><a href="#">Bookmarked</a></li>
                 <li><a href="#">Our Agents</a></li>
             </ul>
@@ -134,7 +134,7 @@ $result = mysqli_query($con, $sql);
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Homehub. All rights reserved.</p>
+                <p>&copy; 2024 HomeHub. All rights reserved.</p>
             </div>
         </div>
     </footer>

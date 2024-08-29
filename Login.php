@@ -11,6 +11,7 @@ if (isset($_SESSION["user"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Syne:wght@400..800&display=swap" rel="stylesheet">
     <title>Login Form</title>
     <link rel="stylesheet" href="./CSS/login.css"> 
@@ -69,6 +70,7 @@ if (isset($_SESSION["user"])){
                     <input type="submit" value="Sign in" name="login" class="btn-primary">
                 </div>
             </form>
+            <br>
             <div class="sign-up-link">
                 <p>Don't have an account? <a href="registration.php">Sign up</a></p>
             </div>

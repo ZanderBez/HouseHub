@@ -2,6 +2,7 @@
 session_start();
 if (isset($_SESSION["user"])){
     header("Location: index.php");
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -17,7 +18,7 @@ if (isset($_SESSION["user"])){
 </head>
 <body>
     <div class="container">
-        <!-- Swapped sections: form on the left, content on the right -->
+        <!-- Form Section -->
         <div class="left-section">
             <?php
             if (isset($_POST["submit"])){
@@ -25,21 +26,23 @@ if (isset($_SESSION["user"])){
                 $email = $_POST["email"];
                 $password = $_POST["password"];
                 $passwordRepeat = $_POST["repeat_password"];
+                $userType = $_POST["user_type"];  // Get the user type from the form
 
                 $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
                 $errors = array();
 
-                if (empty($fullName) OR empty($email) OR empty($password) OR empty($passwordRepeat)) {
-                    array_push($errors,"All field are required");
+                if (empty($fullName) || empty($email) || empty($password) || empty($passwordRepeat)) {
+                    array_push($errors,"All fields are required");
                 }
-                if (!filter_var($email, FILTER_VALIDATE_EMAIL))
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                     array_push($errors,"Email is not valid");
+                }
                 if (strlen($password) < 8) {
                     array_push($errors,"Password must be 8 characters long");
                 }
                 if ($password !== $passwordRepeat) {
-                    array_push($errors,"Password does not match");
+                    array_push($errors,"Passwords do not match");
                 }
 
                 require_once "database.php";
@@ -56,13 +59,12 @@ if (isset($_SESSION["user"])){
                         echo "<div class='alert alert-danger'>$error</div>";
                     }
                 } else {
-                    $sql = "INSERT INTO users (full_name, email, password) VALUES (?, ?, ?)";
+                    $sql = "INSERT INTO users (full_name, email, password, type) VALUES (?, ?, ?, ?)";
                     $stmt = mysqli_stmt_init($con);
-                    $prepareStmt = mysqli_stmt_prepare($stmt, $sql);
-                    if ($prepareStmt) {
-                        mysqli_stmt_bind_param($stmt, "sss", $fullName, $email, $passwordHash);
+                    if (mysqli_stmt_prepare($stmt, $sql)) {
+                        mysqli_stmt_bind_param($stmt, "ssss", $fullName, $email, $passwordHash, $userType);  // Bind userType here
                         mysqli_stmt_execute($stmt);
-                        echo "<div class='alert alert-success'> You are registered successfully.</div>";
+                        echo "<div class='alert alert-success'>You are registered successfully.</div>";
                     } else {
                         die("Something went wrong");
                     }
@@ -73,20 +75,39 @@ if (isset($_SESSION["user"])){
                 <div class="sign-logo">
                     <img src="./assets/Log_1.png" alt="Logo">
                 </div>
-                <div class="text-1" style=" text-align: center;color: #FF9F47 ; "><h1>SIGN UP</h1></div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="fullname" placeholder="Full Name:">
+                <div class="text-1" style="text-align: center; color: #FF9F47;">
+                    <h1>SIGN UP</h1>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="email" placeholder="Email:">
+                    <input type="text" class="form-control" name="fullname" placeholder="Full Name:" required>
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" name="password" placeholder="Password:">
+                    <input type="text" class="form-control" name="email" placeholder="Email:" required>
+                </div>
+
+                <div class="form-group">
+                    <div class="radio-group">
+                        <label for="user">User</label>
+                        <input type="radio" id="user" name="user_type" value="user" required>
+                    </div>
+                    <div class="radio-group">
+                        <label for="agent">Agent</label>
+                        <input type="radio" id="agent" name="user_type" value="agent" required>
+                    </div>
+                    <div class="radio-group">
+                        <label for="admin">Admin</label>
+                        <input type="radio" id="admin" name="user_type" value="admin" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password" placeholder="Password:" required>
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" name="repeat_password" placeholder="Repeat Password:">
+                    <input type="password" class="form-control" name="repeat_password" placeholder="Repeat Password:" required>
                 </div>
-                <br>
+
+
                 <div class="form-btn">
                     <input type="submit" class="btn btn-primary" name="submit" value="Sign Up">
                 </div>
@@ -98,8 +119,8 @@ if (isset($_SESSION["user"])){
         </div>
         <div class="right-section">
             <div class="overlay">
-            <h1>SIGN UP</h1>
-            <p>Finding your dream home is just a few clicks away, and unlike your last landlord, we won't raise the rent when you are not looking!</p>
+                <h1>SIGN UP</h1>
+                <p>Finding your dream home is just a few clicks away, and unlike your last landlord, we won't raise the rent when you are not looking!</p>
             </div>
         </div>
     </div>

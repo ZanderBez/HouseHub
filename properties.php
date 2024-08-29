@@ -73,7 +73,7 @@ $result = mysqli_query($con, $sql);
             <ul>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="properties.php">Properties</a></li>
-                <li><a href="#">Sell</a></li>
+                <li><a href="sell.php">Sell</a></li>
                 <li><a href="#">Bookmarked</a></li>
                 <li><a href="#">Our Agents</a></li>
             </ul>
