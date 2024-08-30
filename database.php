@@ -6,7 +6,7 @@ $dbPassword = "";
 $dbName = "real_estate";
 $con = mysqli_connect($hostName, $dbUser, $dbPassword, $dbName);
 if (!$con) {
-    die ("Something went wrong");
+    die ("Something went wrong: " . mysqli_connect_error());
 }
 
 ?>

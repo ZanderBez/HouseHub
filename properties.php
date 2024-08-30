@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION["user"])){
+if (!isset($_SESSION["user_id"])){
     header("Location: login.php");
     exit;
 }
@@ -8,7 +8,8 @@ if (!isset($_SESSION["user"])){
 include 'database.php';
 
 // Initialize the base query
-$sql = "SELECT Title, Address, City, State, Price, ImageOne, Bedrooms, Bathrooms, GarageSpace FROM properties WHERE 1=1";
+$sql = "SELECT PropertyID, Title, Address, City, State, Price, ImageOne, Bedrooms, Bathrooms, GarageSpace FROM properties WHERE 1=1";
+
 
 // Apply filters based on GET parameters
 if (isset($_GET['property_type']) && $_GET['property_type'] !== '') {
@@ -73,9 +74,13 @@ $result = mysqli_query($con, $sql);
             <ul>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="properties.php">Properties</a></li>
-                <li><a href="sell.php">Sell</a></li>
-                <li><a href="#">Bookmarked</a></li>
-                <li><a href="#">Our Agents</a></li>
+                <?php if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] === 'agent'): ?>
+                <li><a href="sell.php">Add Property</a></li>
+                <?php endif; ?>
+                    <?php if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] === 'admin'): ?>
+                    <li><a href="pending.php">Approval</a></li>
+                <?php endif; ?>
+                <li><a href="properties.php">Our Agents</a></li>
             </ul>
         </div>
         <div class="nav-right">
@@ -156,57 +161,62 @@ $result = mysqli_query($con, $sql);
 
     <!-- Properties Grid Section -->
     <div class="background">
-        <div class="container">
-            <div class="prop-text"><h1>PROPERTIES</h1></div>
-            <div class="properties-section text-center">
-                <div class="row">
-                    <?php
-                    if (mysqli_num_rows($result) > 0) {
-                        while($row = mysqli_fetch_assoc($result)) {
-                            echo '<div class="col-md-4">';
-                            echo '<div class="card">';
-                            echo '<img src="' . $row["ImageOne"] . '" class="card-img-top" alt="Property Image">';
-                            echo '<div class="card-body">';
-                            echo '<h5 class="card-title">' . $row["Title"] . '</h5>';
-                            echo '<p class="card-text">Address: ' . $row["Address"] . ', ' . $row["City"] . ', ' . $row["State"] . '</p>';
-                            echo '<div class="d-flex justify-content-between align-items-center">';
-                            echo '<div class="property-icons">';
-                            echo isset($row["Bedrooms"]) ? '<span><i class="fas fa-bed"></i> ' . $row["Bedrooms"] . '</span>' : '';
-                            echo isset($row["Bathrooms"]) ? '<span><i class="fas fa-bath"></i> ' . $row["Bathrooms"] . '</span>' : '';
-                            echo isset($row["GarageSpace"]) ? '<span><i class="fas fa-car"></i> ' . $row["GarageSpace"] . '</span>' : '';
-                            echo '</div>';
-                            echo '<div class="price">R' . number_format($row["Price"]) . '</div>';
-                            echo '</div>';
-                            echo '<a href="#" class="btn btn-outline-light mt-3">See offer</a>';
-                            echo '</div>';
-                            echo '</div>';
-                            echo '</div>';
-                        }
-                    } else {
-                        echo "No properties available.";
+    <div class="container">
+        <div class="prop-text"><h1>PROPERTIES</h1></div>
+        <div class="properties-section text-center">
+            <div class="row">
+                <?php
+                if (mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_assoc($result)) {
+                        echo '<div class="col-md-4">';
+                        echo '<div class="card">';
+                        echo '<img src="' . $row["ImageOne"] . '" class="card-img-top" alt="Property Image">';
+                        echo '<div class="card-body">';
+                        echo '<h5 class="card-title">' . $row["Title"] . '</h5>';
+                        echo '<p class="card-text">Address: ' . $row["Address"] . ', ' . $row["City"] . ', ' . $row["State"] . '</p>';
+                        echo '<div class="d-flex justify-content-between align-items-center">';
+                        echo '<div class="property-icons">';
+                        echo isset($row["Bedrooms"]) ? '<span><i class="fas fa-bed"></i> ' . $row["Bedrooms"] . '</span>' : '';
+                        echo isset($row["Bathrooms"]) ? '<span><i class="fas fa-bath"></i> ' . $row["Bathrooms"] . '</span>' : '';
+                        echo isset($row["GarageSpace"]) ? '<span><i class="fas fa-car"></i> ' . $row["GarageSpace"] . '</span>' : '';
+                        echo '</div>';
+                        echo '<div class="price">R' . number_format($row["Price"]) . '</div>';
+                        echo '</div>';
+                        // Include the property ID in the link to the details page
+                        echo '<a href="details.php?id=' . $row["PropertyID"] . '" class="btn btn-outline-light mt-3">See offer</a>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
                     }
-                    ?>
-                </div>
+                } else {
+                    echo "No properties available.";
+                }
+                ?>
             </div>
         </div>
     </div>
+</div>
 
     <footer class="footer">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="./assets/Layer_1.png" alt="HomeHub Logo" class="footer-logo">
+                    <a href="index.php"><img src="./assets/Layer_1.png" alt="HomeHub Logo" class="footer-logo"></a>
                     <p>Connecting You to Your Perfect Home</p>
                 </div>
                 <div class="col-md-4">
                     <h5>QUICK MENU</h5>
                     <ul class="footer-menu">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Properties</a></li>
-                        <li><a href="#">Sell</a></li>
-                        <li><a href="#">Bookmarked</a></li>
-                        <li><a href="#">Our Agents</a></li>
-                    </ul>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="properties.php">Properties</a></li>
+                        <?php if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] === 'agent'): ?>
+                        <li><a href="sell.php">Add Property</a></li>
+                        <?php endif; ?>
+                            <?php if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] === 'admin'): ?>
+                            <li><a href="pending.php">Approval</a></li>
+                        <?php endif; ?>
+                        <li><a href="properties.php">Our Agents</a></li>
+                        </ul>
                 </div>
                 <div class="col-md-4">
                     <h5>CONTACT US</h5>

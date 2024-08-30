@@ -2,6 +2,7 @@
 session_start();
 if (isset($_SESSION["user"])){
     header("Location: index.php");
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -30,36 +31,44 @@ if (isset($_SESSION["user"])){
                     $email = $_POST["email"];
                     $password = $_POST["password"];
                     require_once "database.php";
+
+                    // Sanitize email input
+                    $email = mysqli_real_escape_string($con, $email);
+
                     $sql = "SELECT * FROM users WHERE email = '$email'";
                     $result = mysqli_query($con, $sql);
                     $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+                    if ($user) {
+                        if (password_verify($password, $user["password"])) {
+                            // Set session variables
+                            $_SESSION["user_id"] = $user["UserID"];
+                            $_SESSION["user_name"] = $user["full_name"];
+                            $_SESSION["user_type"] = $user["Type"];
                     
-                    if ($user){
-                        if (password_verify($password, $user["password"])){
 
-                            session_start();
-                            $_SESSION["user"] ="yes";
                             header("Location: index.php");
-                            die();
-
-                        }else{
-                            echo"<div class='alert alert-danger'>Password does not match</div>";
+                            exit;
+                        } else {
+                            echo "<div class='alert alert-danger'>Password does not match</div>";
                         }
-                    }else{
-                        echo"<div class='alert alert-danger'>Email does not match</div>";
+                    } else {
+                        echo "<div class='alert alert-danger'>Email does not match</div>";
                     }
                 }
             ?>
             <div class="sign-logo">
                 <img src="./assets/Log_1.png" alt="Logo">
             </div>
-            <div class="text-1" style=" text-align: center;color: #FF9F47 ; "><h1>LOG IN</h1></div>
+            <div class="text-1" style="text-align: center; color: #FF9F47;">
+                <h1>LOG IN</h1>
+            </div>
             <form action="login.php" method="post">
                 <div class="form-group">
-                    <input type="email" placeholder="User name or email address" name="email">
+                    <input type="email" placeholder="User name or email address" name="email" required>
                 </div>
                 <div class="form-group">
-                    <input type="password" placeholder="Your password" name="password">
+                    <input type="password" placeholder="Your password" name="password" required>
                 </div>
                 
                 <div class="forgot-password">

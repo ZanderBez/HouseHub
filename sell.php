@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION["user"])){
+if (!isset($_SESSION["user_id"])){
     header("Location: login.php");
     exit;
 }
@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $imageThree = mysqli_real_escape_string($con, $_POST['imageThree']);
     $imageFour = mysqli_real_escape_string($con, $_POST['imageFour']);
 
-    $sql = "INSERT INTO properties (Title, Description, Price, Address, City, State, ZipCode, PropertyType, Status, GarageSpace, Bedrooms, Bathrooms, ImageOne, ImageTwo, ImageThree, ImageFour)
+    $sql = "INSERT INTO pendingproperties (Title, Description, Price, Address, City, State, ZipCode, PropertyType, Status, GarageSpace, Bedrooms, Bathrooms, ImageOne, ImageTwo, ImageThree, ImageFour)
         VALUES ('$title', '$description', '$price', '$address', '$city', '$state', '$zipcode', '$propertyType', '$status', '$garageSpace', '$bedrooms', '$bathrooms','$imageOne', '$imageTwo', '$imageThree', '$imageFour')";
 
     if (mysqli_query($con, $sql)) {
@@ -49,24 +49,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="./CSS/sell.css">
-    <title>List a Property</title>
+    <title>Sell Property</title>
 </head>
 <body>
 <nav class="navbar">
-    <div class="nav-logo"></div>
-    <div class="nav-center">
-        <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="properties.php">Properties</a></li>
-            <li><a href="#">Sell</a></li>
-            <li><a href="#">Bookmarked</a></li>
-            <li><a href="#">Our Agents</a></li>
-        </ul>
-    </div>
-    <div class="nav-right">
+        <div class="nav-logo"></div>
+        <div class="nav-center">
+            <ul>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="properties.php">Properties</a></li>
+                <?php if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] === 'agent'): ?>
+                <li><a href="sell.php">Add Property</a></li>
+                <?php endif; ?>
+                    <?php if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] === 'admin'): ?>
+                    <li><a href="pending.php">Approval</a></li>
+                <?php endif; ?>
+                <li><a href="properties.php">Our Agents</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
         <a href="logout.php" class="btn btn-warning">Logout</a>
-    </div>
-</nav>
+        </div>
+    </nav>
 
 <div class="container">
     <h1>List a New Property</h1>
