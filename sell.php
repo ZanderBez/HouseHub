@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <?php if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] === 'admin'): ?>
                     <li><a href="pending.php">Approval</a></li>
                 <?php endif; ?>
-                <li><a href="properties.php">Our Agents</a></li>
+                <li><a href="agents.php">Our Agents</a></li>
             </ul>
         </div>
         <div class="nav-right">

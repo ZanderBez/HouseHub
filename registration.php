@@ -119,8 +119,6 @@ if (isset($_SESSION["user"])){
         </div>
         <div class="right-section">
             <div class="overlay">
-                <h1>SIGN UP</h1>
-                <p>Finding your dream home is just a few clicks away, and unlike your last landlord, we won't raise the rent when you are not looking!</p>
             </div>
         </div>
     </div>

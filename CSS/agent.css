@@ -1,0 +1,194 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h1,h2,h5{
+    font-family: "Syne", sans-serif;
+}
+
+p,h3,a {
+    font-family: "Lora", serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1B1B1B;
+    padding: 10px 20px;
+}
+
+.navbar{
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-logo{
+    background-image: url(../assets/Log_1.png);
+    background-position: center;
+    background-size: contain;
+    width: 57px;
+    height: 6vh;
+}
+
+.navbar ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 18px;
+}
+
+.navbar ul li a:hover {
+    color: #FF9F47;
+}
+
+.nav-right {
+    display: flex;
+    gap: 10px;
+}
+
+.hero-section {
+    background-image: url(../assets/3d-house-model-with-modern-architecture.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 80vh;
+    position: relative;
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-content {
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 60px;
+    margin-bottom: 15px;
+}
+
+.hero-content h3 {
+    padding: 5px 150px;
+    margin-bottom: 20px;
+}
+
+.agent-text{
+    margin-top: 20px;
+    text-align: center;
+}
+
+.card-custom {
+    background-color: #1B1B1B;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-custom img {
+    height: 270px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.card-body-custom {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.card-title {
+    color: #FF9F47;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    color: #FF9F47;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+
+.footer {
+    background-color: #1B1B1B;
+    padding: 20px 0;
+    color: #FFFFFF;
+}
+
+.footer-logo {
+    margin-top: 50px;
+    width: 250px;
+    height: 5vh;
+}
+
+.footer p {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.footer h5 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #FF9F47;
+}
+
+.footer-menu {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-menu li {
+    margin-bottom: 10px;
+}
+
+.footer-menu li a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-menu li a:hover {
+    color: #fcd9b8;
+}
+
+.footer-socials a {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.footer-socials img {
+    width: 24px;
+    height: 24px;
+}
+
+.footer-bottom {
+    border-top: 1px solid #FF9F47;
+    margin-top: 30px;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 14px;
+    color: #ffffff;
+}

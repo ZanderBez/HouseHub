@@ -21,8 +21,6 @@ if (isset($_SESSION["user"])){
     <div class="container">
         <div class="left-section">
             <div class="overlay">
-                <h1>LOG IN</h1>
-                <p>Did you know? The average person will move 11 times in their lifetime. Why not make your next move the best one yet? Buy or sell your dream home with us</p>
             </div>
         </div>
         <div class="right-section">
@@ -69,10 +67,6 @@ if (isset($_SESSION["user"])){
                 </div>
                 <div class="form-group">
                     <input type="password" placeholder="Your password" name="password" required>
-                </div>
-                
-                <div class="forgot-password">
-                    <a href="#">Forgot your password?</a>
                 </div>
                 <br>
                 <div class="form-bnt">
