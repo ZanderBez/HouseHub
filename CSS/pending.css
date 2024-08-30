@@ -1,14 +1,18 @@
-body {
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
 }
 
-h1,h2,h5{
-    font-family: "Syne", sans-serif;
-}
-
-p,h3,a {
+body {
     font-family: "Lora", serif;
+    flex: 1;
+}
+
+.container {
+    flex: 1;
 }
 
 .navbar {
@@ -19,13 +23,13 @@ p,h3,a {
     padding: 10px 20px;
 }
 
-.navbar{
+.navbar {
     font-size: 24px;
     font-weight: bold;
     color: white;
 }
 
-.nav-logo{
+.nav-logo {
     background-image: url(../assets/Log_1.png);
     background-position: center;
     background-size: contain;
@@ -55,10 +59,15 @@ p,h3,a {
     display: flex;
     gap: 10px;
 }
+
 .footer {
     background-color: #1B1B1B;
     padding: 20px 0;
     color: #FFFFFF;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: auto;
 }
 
 .footer-logo {

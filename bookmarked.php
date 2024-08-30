@@ -1,17 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION["user_id"])){
-    header("Location: login.php");
-    exit;
-}
-
-include 'database.php'; 
-
-// Fetch agents from the database
-$sql = "SELECT * FROM agents";
-$result = mysqli_query($con, $sql);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,15 +8,15 @@ $result = mysqli_query($con, $sql);
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Syne:wght@400..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="./CSS/agent.css">
-    <title>Our Agents</title>
+    <link rel="stylesheet" href="./CSS/bookmarked.css">
+    <title>BookMarked Page</title>
 </head>
 <body>
 <nav class="navbar">
         <div class="nav-logo"></div>
         <div class="nav-center">
             <ul>
-                <li><a href="index.php">Home</a></li>
+                <li><a href="index.php">Home</a></li> 
                 <li><a href="properties.php">Properties</a></li>
                 <?php if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] === 'agent'): ?>
                 <li><a href="sell.php">Add Property</a></li>
@@ -51,38 +37,10 @@ $result = mysqli_query($con, $sql);
     <div class="hero-section">
         <div class="overlay">
             <div class="hero-content text-center">
-                <h1 class="display-4">Our Agents</h1>
+                <h1 class="display-4">Your BookMarks</h1>
             </div>
         </div>
     </div>
-    <div class="agent-text"><h1>Agents</h1></div>
-    <!-- Agents Section -->
-    <div class="container my-5">
-        <div class="row">
-            
-            <?php 
-            if (mysqli_num_rows($result) > 0) {
-                while ($agent = mysqli_fetch_assoc($result)) {
-                    echo '
-                    <div class="col-md-3">
-                        <div class="card card-custom mb-4 shadow-sm">
-                            <img src="'.htmlspecialchars($agent['ImageOne']).'" class="card-img-top" alt="Agent Image">
-                            <div class="card-body card-body-custom">
-                                <h5 class="card-title">'.htmlspecialchars($agent['AgentName']).'</h5>
-                                <p class="card-text">Number:  + '.htmlspecialchars($agent['Number']).'</p>
-                                <p class="card-text">Email: '.htmlspecialchars($agent['email']).'</p>
-                                <p class="card-text">Region: '.htmlspecialchars($agent['City']).'</p>
-                            </div>
-                        </div>
-                    </div>';
-                }
-            } else {
-                echo '<p>No agents found.</p>';
-            }
-            ?>
-        </div>
-    </div>
-
     <footer class="footer">
         <div class="container">
             <div class="row">
@@ -98,10 +56,10 @@ $result = mysqli_query($con, $sql);
                         <?php if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] === 'agent'): ?>
                         <li><a href="sell.php">Add Property</a></li>
                         <?php endif; ?>
-                        <?php if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] === 'admin'): ?>
-                        <li><a href="pending.php">Approval</a></li>
+                            <?php if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] === 'admin'): ?>
+                            <li><a href="pending.php">Approval</a></li>
                         <?php endif; ?>
-                        <li><a href="agents.php">Our Agents</a></li>
+                        <li><a href="properties.php">Our Agents</a></li>
                         <li><a href="bookmarked.php">BookMarked</a></li>
                         </ul>
                     </ul>

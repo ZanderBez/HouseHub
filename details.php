@@ -1,12 +1,12 @@
 <?php
 session_start();
-if (!isset($_SESSION["user_id"])) {
-    header("Location: login.php");
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
     exit;
 }
 
 if (!isset($_GET['id']) || empty($_GET['id'])) {
-    echo "Invalid property ID.";
+    echo 'Invalid property ID.';
     exit;
 }
 
@@ -20,11 +20,15 @@ $sql = "SELECT * FROM properties WHERE PropertyID = $property_id";
 $result = mysqli_query($con, $sql);
 
 if (!$result || mysqli_num_rows($result) == 0) {
-    echo "Property not found.";
+    echo 'Property not found.';
     exit;
 }
 
 $property = mysqli_fetch_assoc($result);
+
+$agentSql = "SELECT * FROM agents WHERE Agent_ID = " . $property['AgentID'];
+$agentResult = mysqli_query($con, $agentSql);
+$agent = mysqli_fetch_assoc($agentResult);
 
 // Handle review submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -66,6 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <li><a href="pending.php">Approval</a></li>
                 <?php endif; ?>
                 <li><a href="agents.php">Our Agents</a></li>
+                <li><a href="bookmarked.php">BookMarked</a></li>
             </ul>
         </div>
         <div class="nav-right">
@@ -78,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <img src="<?php echo htmlspecialchars($property['ImageOne']); ?>" alt="Property Image">
     <div class="overlay">
         <h1><?php echo htmlspecialchars($property['Title']); ?></h1>
-        <a href="#" class="btn">GET A AGENT</a>
+        <a href="properties.php" class="btn">GO BACK</a>
     </div>
 </div>
 
@@ -132,37 +137,56 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 </div>
 
-<!-- Reviews Section -->
-<div class="reviews-section">
-    <h2>Reviews</h2>
-    <div class="review-list">
-        <?php
-            $reviewSql = "SELECT r.ReviewText, r.CreatedAt, u.full_name 
-            FROM reviews r
-            JOIN users u ON r.userID = u.UserID
-            WHERE r.PropertyID = '$property_id'
-            ORDER BY r.CreatedAt DESC";
-            $reviewResult = mysqli_query($con, $reviewSql);
+<!-- Main Content Section -->
+<div class="container mt-5">
+    <div class="row">
+        <!-- Reviews Section -->
+        <div class="col-md-6">
+            <div class="reviews-section">
+                <h2>Reviews</h2>
+                <div class="review-list">
+                    <?php
+                        $reviewSql = "SELECT r.ReviewText, r.CreatedAt, u.full_name 
+                        FROM reviews r
+                        JOIN users u ON r.userID = u.UserID
+                        WHERE r.PropertyID = '$property_id'
+                        ORDER BY r.CreatedAt DESC";
+                        $reviewResult = mysqli_query($con, $reviewSql);
 
-        
-        if (mysqli_num_rows($reviewResult) > 0) {
-            while ($review = mysqli_fetch_assoc($reviewResult)) {
-                echo "<div class='review-item'>";
-                echo "<p><strong>" . htmlspecialchars($review['full_name']) . "</strong> - " . htmlspecialchars($review['CreatedAt']) . "</p>";
-                echo "<p>" . htmlspecialchars($review['ReviewText']) . "</p>";
-                echo "</div>";
-            }
-        } else {
-            echo "<p>No reviews yet. Be the first to review this property!</p>";
-        }
-        ?>
-    </div>
-    <div class="add-review">
-        <h3>Add a review</h3>
-        <form action="details.php?id=<?php echo $property_id; ?>" method="POST">
-            <textarea name="review" placeholder="Write your review here..." required></textarea>
-            <button type="submit">Submit</button>
-        </form>
+                        if (mysqli_num_rows($reviewResult) > 0) {
+                            while ($review = mysqli_fetch_assoc($reviewResult)) {
+                                echo "<div class='review-item'>";
+                                echo "<h5><strong>" . htmlspecialchars($review['full_name']) . "</strong> - " . htmlspecialchars($review['CreatedAt']) . "</h5>";
+                                echo "<p>" . htmlspecialchars($review['ReviewText']) . "</p>";
+                                echo "</div>";
+                            }
+                        } else {
+                            echo "<p>No reviews yet. Be the first to review this property!</p>";
+                        }
+                    ?>
+                </div>
+                <div class="add-review">
+                    <h3>Add a review</h3>
+                    <form action="details.php?id=<?php echo $property_id; ?>" method="POST">
+                        <textarea name="review" placeholder="Write your review here..." required></textarea>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Agent Section -->
+        <div class="col-md-6">
+            <div class="card">
+                <img src="<?php echo $agent['ImageOne']; ?>" alt="Agent Image">
+                <div class="card-body">
+                    <h5 class="card-title"><?php echo htmlspecialchars($agent['AgentName']); ?></h5>
+                    <p class="card-text">Phone: <?php echo htmlspecialchars($agent['Number']); ?></p>
+                    <p class="card-text">Email: <?php echo htmlspecialchars($agent['email']); ?></p>
+                    <p <?php echo htmlspecialchars($agent['email']); ?> class="btn">Contact Agent</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -186,6 +210,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <li><a href="pending.php">Approval</a></li>
                         <?php endif; ?>
                         <li><a href="properties.php">Our Agents</a></li>
+                        <li><a href="bookmarked.php">BookMarked</a></li>
                         </ul>
                 </ul>
             </div>

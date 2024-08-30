@@ -81,6 +81,7 @@ $result = mysqli_query($con, $sql);
                     <li><a href="pending.php">Approval</a></li>
                 <?php endif; ?>
                 <li><a href="agents.php">Our Agents</a></li>
+                <li><a href="bookmarked.php">BookMarked</a></li>
             </ul>
         </div>
         <div class="nav-right">
@@ -115,6 +116,7 @@ $result = mysqli_query($con, $sql);
                         <option value="Pretoria">Pretoria</option>
                         <option value="Cape Town">Cape Town</option>
                         <option value="Durban">Durban</option>
+                        <option value="Durban">Bloemfontein</option>
                     </select>
                 </div>
                 <div class="col-md-2">
@@ -216,6 +218,7 @@ $result = mysqli_query($con, $sql);
                             <li><a href="pending.php">Approval</a></li>
                         <?php endif; ?>
                         <li><a href="properties.php">Our Agents</a></li>
+                        <li><a href="bookmarked.php">BookMarked</a></li>
                         </ul>
                 </div>
                 <div class="col-md-4">

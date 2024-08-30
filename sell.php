@@ -27,8 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $imageThree = mysqli_real_escape_string($con, $_POST['imageThree']);
     $imageFour = mysqli_real_escape_string($con, $_POST['imageFour']);
 
-    $sql = "INSERT INTO pendingproperties (Title, Description, Price, Address, City, State, ZipCode, PropertyType, Status, GarageSpace, Bedrooms, Bathrooms, ImageOne, ImageTwo, ImageThree, ImageFour)
-        VALUES ('$title', '$description', '$price', '$address', '$city', '$state', '$zipcode', '$propertyType', '$status', '$garageSpace', '$bedrooms', '$bathrooms','$imageOne', '$imageTwo', '$imageThree', '$imageFour')";
+    $sql = "INSERT INTO pendingproperties (Title, Description, Price, Address, City, State, ZipCode, PropertyType, Status, AgentID, GarageSpace, Bedrooms, Bathrooms, ImageOne, ImageTwo, ImageThree, ImageFour)
+        VALUES ('$title', '$description', '$price', '$address', '$city', '$state', agentID, '$zipcode', '$propertyType', '$status', '$garageSpace', '$bedrooms', '$bathrooms','$imageOne', '$imageTwo', '$imageThree', '$imageFour')";
 
     if (mysqli_query($con, $sql)) {
         $propertyListed = true; // Set this to true when the property is successfully listed
@@ -65,6 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <li><a href="pending.php">Approval</a></li>
                 <?php endif; ?>
                 <li><a href="agents.php">Our Agents</a></li>
+                <li><a href="bookmarked.php">BookMarked</a></li>
             </ul>
         </div>
         <div class="nav-right">
@@ -112,6 +113,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <option value="sold">Sold</option>
             <option value="pending">Pending</option>
         </select>
+
+        <label for="agentID">AgentID</label>
+        <input type="text" id="agentID" name="agentID" required>
 
         <label for="garageSpace">Garage Space</label>
         <input type="number" id="garageSpace" name="garageSpace" required>

@@ -57,10 +57,11 @@ p, h3, a {
 }
 
 .hero-section {
-    background-image: url(../assets/3d-house-model-with-modern-architecture.jpg);
+    width: 100%;
+    background-image: url(../assets/AdobeStock_437542364.jpeg);
     background-position: center;
     background-size: cover;
-    height: 60vh;
+    height: 80vh;
     position: relative;
 }
 

@@ -30,7 +30,7 @@ $result = mysqli_query($con, $sql);
         <div class="nav-logo"></div>
         <div class="nav-center">
             <ul>
-                <li><a href="index.php">Home</a></li>
+                <li><a href="index.php">Home</a></li> 
                 <li><a href="properties.php">Properties</a></li>
                 <?php if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] === 'agent'): ?>
                 <li><a href="sell.php">Add Property</a></li>
@@ -39,6 +39,7 @@ $result = mysqli_query($con, $sql);
                     <li><a href="pending.php">Approval</a></li>
                 <?php endif; ?>
                 <li><a href="agents.php">Our Agents</a></li>
+                <li><a href="bookmarked.php">BookMarked</a></li>
             </ul>
         </div>
         <div class="nav-right">
@@ -63,7 +64,7 @@ $result = mysqli_query($con, $sql);
             <div class="col-md-6 mission-text">
                 <h2>Our Mission</h2>
                 <p>At HomeHub, our mission is to simplify the real estate journey by connecting buyers and sellers in a transparent, efficient, and personalized way. We strive to empower our clients with the tools and knowledge they need to make informed decisions, ensuring every transaction is smooth and successful. Whether you're buying your first home or selling a cherished property, our goal is to provide exceptional service, fostering trust and satisfaction at every stage of the process.</p>
-                <a href="#" class="btn btn-outline-light">VIEW PROPERTIES</a>
+                <a href="properties.php" class="btn btn-outline-light">VIEW PROPERTIES</a>
             </div>
             <div class="col-md-6">
                 <img src="./assets/AdobeStock_586090420.jpeg" alt="Mission Image" class="img-fluid rounded">
@@ -128,6 +129,7 @@ $result = mysqli_query($con, $sql);
                             <li><a href="pending.php">Approval</a></li>
                         <?php endif; ?>
                         <li><a href="properties.php">Our Agents</a></li>
+                        <li><a href="bookmarked.php">BookMarked</a></li>
                         </ul>
                     </ul>
                 </div>

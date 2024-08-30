@@ -15,8 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (isset($_POST['approve'])) {
         // Move property to 'properties' table
-        $sql = "INSERT INTO properties (Title, Description, Price, Address, City, State, ZipCode, PropertyType, Status, GarageSpace, Bedrooms, Bathrooms, ImageOne, ImageTwo, ImageThree, ImageFour)
-                SELECT Title, Description, Price, Address, City, State, ZipCode, PropertyType, 'available', GarageSpace, Bedrooms, Bathrooms, ImageOne, ImageTwo, ImageThree, ImageFour
+        $sql = "INSERT INTO properties (Title, Description, Price, Address, City, State, ZipCode, PropertyType, Status, AgentID, GarageSpace, Bedrooms, Bathrooms, ImageOne, ImageTwo, ImageThree, ImageFour)
+                SELECT Title, Description, Price, Address, City, State, AgentID, ZipCode, PropertyType, 'available', GarageSpace, Bedrooms, Bathrooms, ImageOne, ImageTwo, ImageThree, ImageFour
                 FROM pendingproperties WHERE PendingID = $property_id";
 
         if (mysqli_query($con, $sql)) {
@@ -66,6 +66,7 @@ $result = mysqli_query($con, $sql);
                     <li><a href="pending.php">Approval</a></li>
                 <?php endif; ?>
                 <li><a href="agents.php">Our Agents</a></li>
+                <li><a href="bookmarked.php">BookMarked</a></li>
             </ul>
         </div>
         <div class="nav-right">
@@ -82,6 +83,8 @@ $result = mysqli_query($con, $sql);
                 <th>Title</th>
                 <th>Description</th>
                 <th>Price</th>
+                <th>City</th>
+                <th>State</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -91,9 +94,11 @@ $result = mysqli_query($con, $sql);
                 <td><?php echo htmlspecialchars($row['Title']); ?></td>
                 <td><?php echo htmlspecialchars($row['Description']); ?></td>
                 <td><?php echo htmlspecialchars($row['Price']); ?></td>
+                <td><?php echo htmlspecialchars($row['City']); ?></td>
+                <td><?php echo htmlspecialchars($row['State']); ?></td>
                 <td>
                     <form method="POST" style="display:inline;">
-                        <input type="hidden" name="property_id" value="<?php echo $row['PendingID']; ?>"> <!-- Changed PropertyID to PendingID -->
+                        <input type="hidden" name="property_id" value="<?php echo $row['PendingID']; ?>">
                         <button type="submit" name="approve" class="btn btn-success">Approve</button>
                         <button type="submit" name="reject" class="btn btn-danger">Reject</button>
                     </form>
@@ -126,6 +131,7 @@ $result = mysqli_query($con, $sql);
                             <li><a href="pending.php">Approval</a></li>
                         <?php endif; ?>
                         <li><a href="properties.php">Our Agents</a></li>
+                        <li><a href="bookmarked.php">BookMarked</a></li>
                     </ul>
                     </ul>
                 </div>

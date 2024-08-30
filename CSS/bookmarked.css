@@ -1,14 +1,18 @@
-body {
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
 }
 
-h1,h2,h5{
-    font-family: "Syne", sans-serif;
-}
-
-p,h3,a {
+body {
     font-family: "Lora", serif;
+    flex: 1;
+}
+
+.container {
+    flex: 1;
 }
 
 .navbar {
@@ -19,13 +23,13 @@ p,h3,a {
     padding: 10px 20px;
 }
 
-.navbar{
+.navbar {
     font-size: 24px;
     font-weight: bold;
     color: white;
 }
 
-.nav-logo{
+.nav-logo {
     background-image: url(../assets/Log_1.png);
     background-position: center;
     background-size: contain;
@@ -57,7 +61,7 @@ p,h3,a {
 }
 
 .hero-section {
-    background-image: url(../assets/3d-house-model-with-modern-architecture.jpg);
+    background-image: url(../assets/AdobeStock_380103587.jpeg);
     background-position: center;
     background-size: cover;
     height: 80vh;
@@ -85,116 +89,14 @@ p,h3,a {
     margin-bottom: 20px;
 }
 
-.mission-photo-section {
-    padding: 50px 0;
-}
-
-.mission-text {
-    background-color: #1B1B1B;
-    padding: 20px;
-    color: white;
-    border-radius: 5px;
-}
-
-.mission-text h2 {
-    font-size: 32px;
-    margin-bottom: 20px;
-    color: #FF9F47;
-}
-
-.mission-text p {
-    font-size: 18px;
-}
-
-.background {
-    background-color: #050505;
-    padding: 50px 0;
-}
-
-.properties-section {
-    color: white;
-}
-
-.properties-section h2 {
-    font-size: 32px;
-    margin-bottom: 30px;
-}
-
-.card {
-    background-color: #050505;
-    border: none;
-    border-radius: 5px;
-    overflow: hidden;
-    margin-bottom: 30px;
-}
-
-.card a {
-    margin-left: 25px;
-    float: right;
-}
-
-.card-body .d-flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.card-body .d-flex div {
-    display: flex;
-}
-
-.card-body .price {
-    color: #FF9F47;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.card-body i {
-    margin-right: 5px;
-    color: #FF9F47;
-}
-
-.card-body .fa-bed, .fa-bath, .fa-car {
-    font-size: 18px;
-}
-
-.card-title {
-    color: #FF9F47;
-    font-size: 22px;
-}
-
-.card-text {
-    color: #ffffff;
-}
-
-.property-icons {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
-
-.property-icons span {
-    display: flex;
-    align-items: center;
-    font-size: 20px;
-    color: #ffffff;
-}
-
-.property-icons i {
-    margin-right: 10px;
-    color: #FF9F47;
-}
-
-.price {
-    color: #FF9F47;
-    font-size: 18px;
-}
-
 .footer {
     background-color: #1B1B1B;
     padding: 20px 0;
     color: #FFFFFF;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: auto;
 }
 
 .footer-logo {
@@ -256,4 +158,3 @@ p,h3,a {
     font-size: 14px;
     color: #ffffff;
 }
-

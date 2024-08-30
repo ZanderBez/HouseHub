@@ -57,7 +57,7 @@ p,h3,a {
 }
 
 .hero-section {
-    background-image: url(../assets/3d-house-model-with-modern-architecture.jpg);
+    background-image: url(../assets/AdobeStock_707327718.jpeg);
     background-position: center;
     background-size: cover;
     height: 80vh;
@@ -65,7 +65,7 @@ p,h3,a {
 }
 
 .overlay {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 126, 52, 0.171);
     width: 100%;
     height: 100%;
     display: flex;
