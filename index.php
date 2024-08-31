@@ -67,7 +67,7 @@ $result = mysqli_query($con, $sql);
                 <a href="properties.php" class="btn btn-outline-light">VIEW PROPERTIES</a>
             </div>
             <div class="col-md-6">
-                <img src="./assets/AdobeStock_586090420.jpeg" alt="Mission Image" class="img-fluid rounded">
+                <img src="./assets/AdobeStock_227656591.jpeg" alt="Mission Image" class="img-fluid rounded">
             </div>
         </div>
     </div>
