@@ -30,7 +30,6 @@ if (isset($_SESSION["user"])){
                     $password = $_POST["password"];
                     require_once "database.php";
 
-                    // Sanitize email input
                     $email = mysqli_real_escape_string($con, $email);
 
                     $sql = "SELECT * FROM users WHERE email = '$email'";
@@ -39,7 +38,6 @@ if (isset($_SESSION["user"])){
 
                     if ($user) {
                         if (password_verify($password, $user["password"])) {
-                            // Set session variables
                             $_SESSION["user_id"] = $user["UserID"];
                             $_SESSION["user_name"] = $user["full_name"];
                             $_SESSION["user_type"] = $user["Type"];

@@ -3,11 +3,11 @@ body {
     padding: 0;
 }
 
-h1,h2,h5{
+h1, h2, h5 {
     font-family: "Syne", sans-serif;
 }
 
-p,h3,a {
+p, h3, a {
     font-family: "Lora", serif;
 }
 
@@ -19,13 +19,13 @@ p,h3,a {
     padding: 10px 20px;
 }
 
-.navbar{
+.navbar {
     font-size: 24px;
     font-weight: bold;
     color: white;
 }
 
-.nav-logo{
+.nav-logo {
     background-image: url(../assets/Log_1.png);
     background-position: center;
     background-size: contain;
@@ -49,6 +49,11 @@ p,h3,a {
 
 .navbar ul li a:hover {
     color: #FF9F47;
+}
+
+.navbar ul li a.active {
+    color: #FF9F47 !important ;
+    font-weight: bold !important;
 }
 
 .nav-right {
@@ -87,7 +92,7 @@ p,h3,a {
     margin-bottom: 20px;
 }
 
-.agent-text{
+.agent-text {
     margin-top: 20px;
     text-align: center;
 }
@@ -98,6 +103,7 @@ p,h3,a {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card-custom img {
@@ -126,7 +132,13 @@ p,h3,a {
     margin-bottom: 5px;
 }
 
+/* Hover effect */
+.card-custom:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
 
+/* Footer styling */
 .footer {
     background-color: #1B1B1B;
     padding: 20px 0;

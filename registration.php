@@ -26,7 +26,7 @@ if (isset($_SESSION["user"])){
                 $email = $_POST["email"];
                 $password = $_POST["password"];
                 $passwordRepeat = $_POST["repeat_password"];
-                $userType = $_POST["user_type"];  // Get the user type from the form
+                $userType = $_POST["user_type"];
 
                 $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
@@ -62,7 +62,7 @@ if (isset($_SESSION["user"])){
                     $sql = "INSERT INTO users (full_name, email, password, type) VALUES (?, ?, ?, ?)";
                     $stmt = mysqli_stmt_init($con);
                     if (mysqli_stmt_prepare($stmt, $sql)) {
-                        mysqli_stmt_bind_param($stmt, "ssss", $fullName, $email, $passwordHash, $userType);  // Bind userType here
+                        mysqli_stmt_bind_param($stmt, "ssss", $fullName, $email, $passwordHash, $userType);
                         mysqli_stmt_execute($stmt);
                         echo "<div class='alert alert-success'>You are registered successfully.</div>";
                     } else {

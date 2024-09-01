@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         VALUES ('$title', '$description', '$price', '$address', '$city', '$state', agentID, '$zipcode', '$propertyType', '$status', '$garageSpace', '$bedrooms', '$bathrooms','$imageOne', '$imageTwo', '$imageThree', '$imageFour')";
 
     if (mysqli_query($con, $sql)) {
-        $propertyListed = true; // Set this to true when the property is successfully listed
+        $propertyListed = true;
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($con);
     }
@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <li><a href="index.php">Home</a></li>
                 <li><a href="properties.php">Properties</a></li>
                 <?php if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] === 'agent'): ?>
-                <li><a href="sell.php">Add Property</a></li>
+                <li><a href="sell.php" class="active">Add Property</a></li>
                 <?php endif; ?>
                     <?php if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] === 'admin'): ?>
                     <li><a href="pending.php">Approval</a></li>
@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </ul>
         </div>
         <div class="nav-right">
-        <a href="logout.php" class="btn btn-warning">Logout</a>
+        <a href="logout.php" class="btn btn-outline-light">Logout</a>
         </div>
     </nav>
 

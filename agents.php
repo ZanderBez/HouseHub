@@ -7,7 +7,6 @@ if (!isset($_SESSION["user_id"])){
 
 include 'database.php'; 
 
-// Fetch agents from the database
 $sql = "SELECT * FROM agents";
 $result = mysqli_query($con, $sql);
 ?>
@@ -38,12 +37,12 @@ $result = mysqli_query($con, $sql);
                     <?php if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] === 'admin'): ?>
                     <li><a href="pending.php">Approval</a></li>
                 <?php endif; ?>
-                <li><a href="agents.php">Our Agents</a></li>
+                <li><a href="agents.php" class="active">Our Agents</a></li>
                 <li><a href="bookmarked.php">BookMarked</a></li>
             </ul>
         </div>
         <div class="nav-right">
-        <a href="logout.php" class="btn btn-warning">Logout</a>
+        <a href="logout.php" class="btn btn-outline-light">Logout</a>
         </div>
     </nav>
 
@@ -58,8 +57,7 @@ $result = mysqli_query($con, $sql);
     <div class="agent-text"><h1>Agents</h1></div>
     <!-- Agents Section -->
     <div class="container my-5">
-        <div class="row">
-            
+        <div class="row" >
             <?php 
             if (mysqli_num_rows($result) > 0) {
                 while ($agent = mysqli_fetch_assoc($result)) {

@@ -49,7 +49,6 @@ p,h3,a {
     height: auto;
 }
 
-/* Form Styling */
 .form-group {
     margin-bottom: 15px;
 }
@@ -79,7 +78,6 @@ p,h3,a {
     margin-right: 0; 
 }
 
-/* Aligning form elements */
 .form-group input,
 .form-group textarea,
 .form-group select {

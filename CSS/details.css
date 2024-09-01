@@ -1,5 +1,4 @@
-/* General styling */
-body {
+.body {
     margin: 0;
     padding: 0;
     font-family: "Lora", serif;
@@ -13,13 +12,13 @@ body {
     padding: 10px 20px;
 }
 
-.navbar{
+.navbar {
     font-size: 24px;
     font-weight: bold;
     color: white;
 }
 
-.nav-logo{
+.nav-logo {
     background-image: url(../assets/Log_1.png);
     background-position: center;
     background-size: contain;
@@ -49,7 +48,7 @@ body {
     display: flex;
     gap: 10px;
 }
-/* Hero Section */
+
 .hero-section {
     position: relative;
     width: 100%;
@@ -97,7 +96,6 @@ body {
     margin-top: 10px;
 }
 
-/* Property Details Section */
 .property-details {
     display: flex;
     flex-wrap: wrap;
@@ -154,17 +152,15 @@ body {
 }
 
 .carousel-indicators button {
-    border: 2px solid #FF9F47; 
-    width: 30px; 
-    height: 3px; 
-
+    border: 2px solid #FF9F47;
+    width: 30px;
+    height: 3px;
 }
 
 .carousel-indicators .active {
     background-color: #FF9F47;
 }
 
-/* Reviews Section */
 .reviews-section {
     color: #FFFFFF;
     background-color: #fff;
@@ -181,7 +177,7 @@ body {
 .review-list {
     display: flex;
     flex-direction: column;
-    gap: 20px; 
+    gap: 20px;
 }
 
 .review-item {
@@ -189,7 +185,7 @@ body {
     border: solid 2px #FF9F47;
     padding: 20px;
     border-radius: 10px;
-    width: 100%; 
+    width: 100%;
     font-size: 16px;
     color: #FFFFFF;
     text-align: left;
@@ -237,14 +233,14 @@ body {
 }
 
 .card {
-    width: 500px; 
-    height: 550px; 
+    width: 500px;
+    height: 550px;
     border: 1px solid #e08e40;
     border-radius: 10px;
     overflow: hidden;
     background-color: #1B1B1B;
-    margin: 20px auto; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -252,8 +248,8 @@ body {
 
 .card img {
     width: 100%;
-    height: 330px; 
-    object-fit: cover; 
+    height: 330px;
+    object-fit: cover;
     border-bottom: 1px solid #ccc;
 }
 
@@ -291,8 +287,11 @@ body {
     background-color: #e08e40;
 }
 
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
 
-/* Footer Section */
 .footer {
     background-color: #1B1B1B;
     padding: 20px 0;

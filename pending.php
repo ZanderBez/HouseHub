@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Check if the user is an admin
 if (!isset($_SESSION["user_type"]) || $_SESSION["user_type"] !== 'admin') {
     header("Location: login.php");
     exit;
@@ -9,18 +8,15 @@ if (!isset($_SESSION["user_type"]) || $_SESSION["user_type"] !== 'admin') {
 
 include 'database.php';
 
-// Handle approval/rejection
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $property_id = intval($_POST['property_id']); // Use PendingID instead of PropertyID
+    $property_id = intval($_POST['property_id']);
 
     if (isset($_POST['approve'])) {
-        // Move property to 'properties' table
         $sql = "INSERT INTO properties (Title, Description, Price, Address, City, State, ZipCode, PropertyType, Status, AgentID, GarageSpace, Bedrooms, Bathrooms, ImageOne, ImageTwo, ImageThree, ImageFour)
                 SELECT Title, Description, Price, Address, City, State, AgentID, ZipCode, PropertyType, 'available', GarageSpace, Bedrooms, Bathrooms, ImageOne, ImageTwo, ImageThree, ImageFour
                 FROM pendingproperties WHERE PendingID = $property_id";
 
         if (mysqli_query($con, $sql)) {
-            // Delete from 'pendingproperties'
             $delete_sql = "DELETE FROM pendingproperties WHERE PendingID = $property_id";
             mysqli_query($con, $delete_sql);
             echo "<script>alert('Property approved and moved to properties list!');</script>";
@@ -28,7 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "<script>alert('Error in approving the property.');</script>";
         }
     } elseif (isset($_POST['reject'])) {
-        // Delete from 'pendingproperties'
         $delete_sql = "DELETE FROM pendingproperties WHERE PendingID = $property_id";
         if (mysqli_query($con, $delete_sql)) {
             echo "<script>alert('Property rejected and deleted successfully!');</script>";
@@ -38,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-// Fetch pending properties
 $sql = "SELECT * FROM pendingproperties";
 $result = mysqli_query($con, $sql);
 ?>
@@ -63,14 +57,14 @@ $result = mysqli_query($con, $sql);
                 <li><a href="sell.php">Add Property</a></li>
                 <?php endif; ?>
                     <?php if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] === 'admin'): ?>
-                    <li><a href="pending.php">Approval</a></li>
+                    <li><a href="pending.php" class="active">Approval</a></li>
                 <?php endif; ?>
                 <li><a href="agents.php">Our Agents</a></li>
                 <li><a href="bookmarked.php">BookMarked</a></li>
             </ul>
         </div>
         <div class="nav-right">
-        <a href="logout.php" class="btn btn-warning">Logout</a>
+        <a href="logout.php" class="btn btn-outline-light">Logout</a>
         </div>
     </nav>
 

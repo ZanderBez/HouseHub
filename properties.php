@@ -7,11 +7,10 @@ if (!isset($_SESSION["user_id"])){
 
 include 'database.php';
 
-// Initialize the base query
 $sql = "SELECT PropertyID, Title, Address, City, State, Price, ImageOne, Bedrooms, Bathrooms, GarageSpace FROM properties WHERE 1=1";
 
 
-// Apply filters based on GET parameters
+//Filters 
 if (isset($_GET['property_type']) && $_GET['property_type'] !== '') {
     $property_type = mysqli_real_escape_string($con, $_GET['property_type']);
     $sql .= " AND PropertyType = '$property_type'";
@@ -73,7 +72,7 @@ $result = mysqli_query($con, $sql);
         <div class="nav-center">
             <ul>
                 <li><a href="index.php">Home</a></li>
-                <li><a href="properties.php">Properties</a></li>
+                <li><a href="properties.php" class="active">Properties</a></li>
                 <?php if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] === 'agent'): ?>
                 <li><a href="sell.php">Add Property</a></li>
                 <?php endif; ?>
@@ -85,7 +84,7 @@ $result = mysqli_query($con, $sql);
             </ul>
         </div>
         <div class="nav-right">
-        <a href="logout.php" class="btn btn-warning">Logout</a>
+        <a href="logout.php" class="btn btn-outline-light">Logout</a>
         </div>
     </nav>
 
@@ -184,7 +183,6 @@ $result = mysqli_query($con, $sql);
                         echo '</div>';
                         echo '<div class="price">R' . number_format($row["Price"]) . '</div>';
                         echo '</div>';
-                        // Include the property ID in the link to the details page
                         echo '<a href="details.php?id=' . $row["PropertyID"] . '" class="btn btn-outline-light mt-3">See offer</a>';
                         echo '</div>';
                         echo '</div>';

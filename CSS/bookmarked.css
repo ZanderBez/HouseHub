@@ -55,6 +55,11 @@ body {
     color: #FF9F47;
 }
 
+.navbar ul li a.active {
+    color: #FF9F47 !important ;
+    font-weight: bold !important;
+}
+
 .nav-right {
     display: flex;
     gap: 10px;
@@ -87,6 +92,81 @@ body {
     color: white;
     padding: 5px 150px;
     margin-bottom: 20px;
+}
+
+.prop-text {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+.card {
+    background-color: #050505;
+    border: none;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.card a {
+    margin-left: 206px;
+    float: right;
+}
+
+.card-body .d-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.property-icons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.property-icons span {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.property-icons i {
+    margin-right: 5px;
+    color: #FF9F47;
+}
+
+.card-title {
+    color: #FF9F47;
+    font-size: 22px;
+}
+
+.card-text {
+    color: #ffffff;
+}
+
+.price {
+    color: #FF9F47;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .footer {

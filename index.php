@@ -7,7 +7,6 @@ if (!isset($_SESSION["user_id"])){
 
 include 'database.php'; 
 
-// Modify the SQL query to limit the results to 3
 $sql = "SELECT PropertyID, Title, Address, City, State, ZipCode, Price, ImageOne, Bedrooms, Bathrooms, GarageSpace FROM properties LIMIT 3";
 $result = mysqli_query($con, $sql);
 ?>
@@ -30,10 +29,10 @@ $result = mysqli_query($con, $sql);
         <div class="nav-logo"></div>
         <div class="nav-center">
             <ul>
-                <li><a href="index.php">Home</a></li> 
+                <li><a href="index.html" class="active">Home</a></li> 
                 <li><a href="properties.php">Properties</a></li>
                 <?php if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] === 'agent'): ?>
-                <li><a href="sell.php">Add Property</a></li>
+                <li><a href="sell.php" >Add Property</a></li>
                 <?php endif; ?>
                     <?php if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] === 'admin'): ?>
                     <li><a href="pending.php">Approval</a></li>
@@ -43,7 +42,7 @@ $result = mysqli_query($con, $sql);
             </ul>
         </div>
         <div class="nav-right">
-        <a href="logout.php" class="btn btn-warning">Logout</a>
+        <a href="logout.php" class="btn btn-outline-light">Logout</a>
         </div>
     </nav>
 

@@ -45,6 +45,11 @@ body {
     color: #FF9F47;
 }
 
+.navbar ul li a.active {
+    color: #FF9F47 !important ;
+    font-weight: bold !important;
+}
+
 .nav-right {
     display: flex;
     gap: 10px;

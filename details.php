@@ -15,7 +15,7 @@ $user_id = $_SESSION['user_id'];
 
 include 'database.php';
 
-// Fetch property details
+
 $sql = "SELECT * FROM properties WHERE PropertyID = $property_id";
 $result = mysqli_query($con, $sql);
 
@@ -30,7 +30,7 @@ $agentSql = "SELECT * FROM agents WHERE Agent_ID = " . $property['AgentID'];
 $agentResult = mysqli_query($con, $agentSql);
 $agent = mysqli_fetch_assoc($agentResult);
 
-// Handle review submission
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $reviewText = mysqli_real_escape_string($con, $_POST['review']);
     $insertReview = "INSERT INTO reviews (PropertyID, UserID, ReviewText) VALUES ('$property_id', '$user_id', '$reviewText')";
@@ -58,25 +58,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
 <nav class="navbar">
-        <div class="nav-logo"></div>
-        <div class="nav-center">
-            <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="properties.php">Properties</a></li>
-                <?php if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] === 'agent'): ?>
-                <li><a href="sell.php">Add Property</a></li>
-                <?php endif; ?>
-                    <?php if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] === 'admin'): ?>
-                    <li><a href="pending.php">Approval</a></li>
-                <?php endif; ?>
-                <li><a href="agents.php">Our Agents</a></li>
-                <li><a href="bookmarked.php">BookMarked</a></li>
-            </ul>
-        </div>
-        <div class="nav-right">
-        <a href="logout.php" class="btn btn-warning">Logout</a>
-        </div>
-    </nav>
+    <div class="nav-logo"></div>
+    <div class="nav-center">
+        <ul>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="properties.php">Properties</a></li>
+            <?php if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] === 'agent'): ?>
+            <li><a href="sell.php">Add Property</a></li>
+            <?php endif; ?>
+            <?php if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] === 'admin'): ?>
+            <li><a href="pending.php"class="active">Approval</a></li>
+            <?php endif; ?>
+            <li><a href="agents.php">Our Agents</a></li>
+            <li><a href="bookmarked.php">BookMarked</a></li>
+        </ul>
+    </div>
+    <div class="nav-right">
+        <a href="logout.php" class="btn btn-outline-light">Logout</a>
+    </div>
+</nav>
 
 <!-- Hero Section -->
 <div class="hero-section">
@@ -98,6 +98,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <li><i class="fas fa-car"></i> <?php echo htmlspecialchars($property['GarageSpace']); ?> Garage</li>
             <li><i class="fas fa-paw"></i> Pet Friendly</li>
         </ul>
+        <form action="bookmark.php" method="POST">
+            <input type="hidden" name="property_id" value="<?php echo $property['PropertyID']; ?>">
+            <button type="submit" class="btn btn-outline-light">Bookmark this Property</button>
+        </form>
+        
+        <button type="button" class="btn btn-outline-light mt-3" data-bs-toggle="modal" data-bs-target="#mortgageCalculatorModal">
+            Mortgage Calculator
+        </button>
     </div>
     <div class="property-images">
         <div id="propertyCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -190,6 +198,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 </div>
 
+<!-- Mortgage Calculator Modal -->
+<div class="modal fade" id="mortgageCalculatorModal" tabindex="-1" aria-labelledby="mortgageCalculatorModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="mortgageCalculatorModalLabel">Mortgage Calculator</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" id="mortgageCalculatorForm">
+                    <div class="form-group mb-3">
+                        <label for="loanAmount">Loan Amount (R):</label>
+                        <input type="number" id="loanAmount" name="loanAmount" class="form-control" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="interestRate">Interest Rate (%):</label>
+                        <input type="number" step="0.01" id="interestRate" name="interestRate" class="form-control" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="loanTerm">Loan Term (Years):</label>
+                        <input type="number" id="loanTerm" name="loanTerm" class="form-control" required>
+                    </div>
+                    <button type="button" onclick="calculateMortgage()" class="btn btn-primary">Calculate</button>
+                </form>
+                <div id="result" class="result mt-3"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Footer Section -->
 <footer class="footer">
     <div class="container">
@@ -202,16 +240,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <h5>QUICK MENU</h5>
                 <ul class="footer-menu">
                     <li><a href="index.php">Home</a></li>
-                        <li><a href="properties.php">Properties</a></li>
-                        <?php if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] === 'agent'): ?>
-                        <li><a href="sell.php">Add Property</a></li>
-                        <?php endif; ?>
-                            <?php if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] === 'admin'): ?>
-                            <li><a href="pending.php">Approval</a></li>
-                        <?php endif; ?>
-                        <li><a href="properties.php">Our Agents</a></li>
-                        <li><a href="bookmarked.php">BookMarked</a></li>
-                        </ul>
+                    <li><a href="properties.php">Properties</a></li>
+                    <?php if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] === 'agent'): ?>
+                    <li><a href="sell.php">Add Property</a></li>
+                    <?php endif; ?>
+                    <?php if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] === 'admin'): ?>
+                    <li><a href="pending.php">Approval</a></li>
+                    <?php endif; ?>
+                    <li><a href="properties.php">Our Agents</a></li>
+                    <li><a href="bookmarked.php">BookMarked</a></li>
                 </ul>
             </div>
             <div class="col-md-4">
@@ -232,6 +269,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script>
+function calculateMortgage() {
+    var loanAmount = parseFloat(document.getElementById('loanAmount').value);
+    var interestRate = parseFloat(document.getElementById('interestRate').value) / 100 / 12; // Convert annual interest rate to monthly
+    var loanTerm = parseInt(document.getElementById('loanTerm').value) * 12; // Convert years to months
 
+    // Calculate the monthly payment
+    var x = Math.pow(1 + interestRate, loanTerm);
+    var monthlyPayment = (loanAmount * x * interestRate) / (x - 1);
+
+    // Display the result
+    document.getElementById('result').innerHTML = "Estimated Monthly Payment: R" + monthlyPayment.toFixed(2);
+}
+</script>
 </body>
 </html>
