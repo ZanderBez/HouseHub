@@ -2,22 +2,23 @@
 
 # Real Estate Web Application
 
-This Real Estate Web Application is a dynamic platform that allows users to browse, bookmark, and purchase properties. Agents can list new properties, and administrators can manage property approvals. The application also includes features like a mortgage calculator and reviews for properties.
+This Real Estate Web Application is called homehub it's a dynamic platform that allows users to browse, bookmark, and purchase properties. Agents can list new properties, and administrators can manage property approvals. The application also includes features like a mortgage calculator and reviews for properties.
 
 ## Table of Contents
 
-1. [Features](#features)
-2. [UI Design](#ui-design)
-3. [Installation](#installation)
-4. [MockUps](#mockups)
-5. [Usage](#usage)
-6. [Folder Structure](#folder-structure)
-7. [Database Structure](#database-structure)
-8. [Technologies Used](#technologies-used)
-9. [Contributing](#contributing)
-10. [Demo Video](#demo-video)
-11. [License](#license)
-12. [Contact](#contact)
+1. [Built With](#built-with)
+2. [Features](#features)
+3. [UI Design](#ui-design)
+4. [Installation](#installation)
+5. [MockUps](#mockups)
+6. [Usage](#usage)
+7. [Folder Structure](#folder-structure)
+8. [Database Structure](#database-structure)
+9. [Technologies Used](#technologies-used)
+10. [Contributing](#contributing)
+11. [Demo Video](#demo-video)
+12. [License](#license)
+13. [Contact](#contact)
 
 ## Built With 
 
@@ -128,7 +129,6 @@ This Real Estate Web Application is a dynamic platform that allows users to brow
 
 ### User Roles
 
-- **Guest Users**: Can browse properties and view agent details.
 - **Registered Users**: Can bookmark properties, leave reviews, and initiate property purchases.
 - **Agents**: Can list new properties for sale.
 - **Administrators**: Can manage property approvals and oversee the entire platform.
@@ -144,8 +144,8 @@ This Real Estate Web Application is a dynamic platform that allows users to brow
 ## Technologies Used
 
 - **Front-end**:
-  - HTML5
-  - CSS3 (Bootstrap)
+  - HTML
+  - CSS (Bootstrap)
   - JavaScript (Bootstrap and custom scripts)
 
 - **Back-end**:
