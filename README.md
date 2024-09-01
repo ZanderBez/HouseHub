@@ -100,7 +100,7 @@ This Real Estate Web Application is a dynamic platform that allows users to brow
 ## MockUps
 
 ### Sign Up Page
-![SignUpMock Screenshot](assets/SignUpMockup.png "SignUpMock Screenshot")
+![SignUpMock Screenshot](assets/SignUPMockup.png "SignUpMock Screenshot")
 
 ### Log In Page
 ![LogInMock Screenshot](assets/LogInMockup.png "LogInMock Screenshot")
