@@ -234,7 +234,7 @@
 
 .card {
     width: 500px;
-    height: 550px;
+    height: 580px;
     border: 1px solid #e08e40;
     border-radius: 10px;
     overflow: hidden;
@@ -288,7 +288,7 @@
 }
 
 .card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-12px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 

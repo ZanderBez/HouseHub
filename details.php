@@ -15,7 +15,7 @@ $user_id = $_SESSION['user_id'];
 
 include 'database.php';
 
-
+// Fetch property details
 $sql = "SELECT * FROM properties WHERE PropertyID = $property_id";
 $result = mysqli_query($con, $sql);
 
@@ -30,15 +30,30 @@ $agentSql = "SELECT * FROM agents WHERE Agent_ID = " . $property['AgentID'];
 $agentResult = mysqli_query($con, $agentSql);
 $agent = mysqli_fetch_assoc($agentResult);
 
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $reviewText = mysqli_real_escape_string($con, $_POST['review']);
-    $insertReview = "INSERT INTO reviews (PropertyID, UserID, ReviewText) VALUES ('$property_id', '$user_id', '$reviewText')";
-    
-    if (mysqli_query($con, $insertReview)) {
-        echo "<div class='alert alert-success'>Review added successfully!</div>";
+// Handle purchase and availability
+$availabilityMessage = '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['purchase'])) {
+        // Update the property status to 'sold'
+        $updateSql = "UPDATE properties SET Status = 'sold' WHERE PropertyID = $property_id";
+        if (mysqli_query($con, $updateSql)) {
+            $availabilityMessage = 'This property has been sold.';
+            echo "<script>alert('Successfully purchased the property!');</script>";
+        } else {
+            $availabilityMessage = 'Failed to update property status.';
+        }
     } else {
-        echo "<div class='alert alert-danger'>Failed to add review: " . mysqli_error($con) . "</div>";
+        // Check for availability
+        $status = $property['Status'];
+        if ($status === 'available') {
+            $availabilityMessage = 'This property is available!';
+        } elseif ($status === 'pending') {
+            $availabilityMessage = 'This property is pending.';
+        } elseif ($status === 'sold') {
+            $availabilityMessage = 'This property has been sold.';
+        } else {
+            $availabilityMessage = 'Status is unknown.';
+        }
     }
 }
 ?>
@@ -67,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <li><a href="sell.php">Add Property</a></li>
             <?php endif; ?>
             <?php if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] === 'admin'): ?>
-            <li><a href="pending.php"class="active">Approval</a></li>
+            <li><a href="pending.php" class="active">Approval</a></li>
             <?php endif; ?>
             <li><a href="agents.php">Our Agents</a></li>
             <li><a href="bookmarked.php">BookMarked</a></li>
@@ -84,6 +99,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="overlay">
         <h1><?php echo htmlspecialchars($property['Title']); ?></h1>
         <a href="properties.php" class="btn">GO BACK</a>
+        <form method="POST" style="display: inline-block;">
+            <button type="submit" class="btn">Check for Availability</button>
+        </form>
+        <p><?php echo $availabilityMessage; ?></p>
     </div>
 </div>
 
@@ -97,12 +116,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <li><i class="fas fa-bath"></i> <?php echo htmlspecialchars($property['Bathrooms']); ?> Bathrooms</li>
             <li><i class="fas fa-car"></i> <?php echo htmlspecialchars($property['GarageSpace']); ?> Garage</li>
             <li><i class="fas fa-paw"></i> Pet Friendly</li>
+            <li><i>Price: R</i><?php echo htmlspecialchars($property['Price']); ?></li>
         </ul>
         <form action="bookmark.php" method="POST">
             <input type="hidden" name="property_id" value="<?php echo $property['PropertyID']; ?>">
             <button type="submit" class="btn btn-outline-light">Bookmark this Property</button>
         </form>
-        
+
         <button type="button" class="btn btn-outline-light mt-3" data-bs-toggle="modal" data-bs-target="#mortgageCalculatorModal">
             Mortgage Calculator
         </button>
@@ -191,8 +211,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <h5 class="card-title"><?php echo htmlspecialchars($agent['AgentName']); ?></h5>
                     <p class="card-text">Phone: <?php echo htmlspecialchars($agent['Number']); ?></p>
                     <p class="card-text">Email: <?php echo htmlspecialchars($agent['email']); ?></p>
-                    <p <?php echo htmlspecialchars($agent['email']); ?> class="btn">Contact Agent</p>
+                    <p class="card-text">Region: <?php echo htmlspecialchars($agent['City']); ?></p>
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#purchaseModal">
+                        Buy Property
+                    </button>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Purchase Modal -->
+<div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="purchaseModalLabel">Purchase Property</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST">
+                    <input type="hidden" name="purchase" value="true">
+                    <div class="form-group mb-3">
+                        <label for="buyerName">Your Name:</label>
+                        <input type="text" id="buyerName" name="buyerName" class="form-control" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="buyerEmail">Your Email:</label>
+                        <input type="email" id="buyerEmail" name="buyerEmail" class="form-control" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="buyerPhone">Phone Number:</label>
+                        <input type="tel" id="buyerPhone" name="buyerPhone" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn">Purchase</button>
+                </form>
             </div>
         </div>
     </div>
@@ -222,6 +275,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                     <button type="button" onclick="calculateMortgage()" class="btn btn-primary">Calculate</button>
                 </form>
+                
                 <div id="result" class="result mt-3"></div>
             </div>
         </div>
@@ -272,10 +326,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <script>
 function calculateMortgage() {
     var loanAmount = parseFloat(document.getElementById('loanAmount').value);
-    var interestRate = parseFloat(document.getElementById('interestRate').value) / 100 / 12; // Convert annual interest rate to monthly
-    var loanTerm = parseInt(document.getElementById('loanTerm').value) * 12; // Convert years to months
+    var interestRate = parseFloat(document.getElementById('interestRate').value) / 100 / 12;
+    var loanTerm = parseInt(document.getElementById('loanTerm').value) * 12;
 
-    // Calculate the monthly payment
     var x = Math.pow(1 + interestRate, loanTerm);
     var monthlyPayment = (loanAmount * x * interestRate) / (x - 1);
 
