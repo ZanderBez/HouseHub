@@ -19,7 +19,8 @@ This Real Estate Web Application is a dynamic platform that allows users to brow
 11. [License](#license)
 12. [Contact](#contact)
 
-Built With
+## Built With 
+
 [![Php]( https://img.shields.io/badge/PHP-001440?style=for-the-badge&logo=php&logoColor=#777BB4)](https://www.php.net/docs.php)
 [![MySQL]( https://img.shields.io/badge/MYSQL-5B5B5B?style=for-the-badge&logo=mysql&logoColor=white)](https://www.php.net/docs.php)
 [![HTML5](https://img.shields.io/badge/HTML-e34c26?style=for-the-badge&logo=html5&logoColor=white)](https://html.spec.whatwg.org/multipage/)
