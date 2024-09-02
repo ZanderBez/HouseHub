@@ -47,7 +47,30 @@ body {
 
 .nav-right {
     display: flex;
+    align-items: center;
     gap: 10px;
+}
+
+.navbar-text {
+    color: white;
+    font-size: 16px;
+}
+
+.custom-logout-btn {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 5px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.custom-logout-btn:hover {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
 }
 
 .container {

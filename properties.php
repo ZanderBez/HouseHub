@@ -7,6 +7,11 @@ if (!isset($_SESSION["user_id"])){
 
 include 'database.php';
 
+$user_id = $_SESSION["user_id"];
+$userSql = "SELECT full_name FROM users WHERE UserID = $user_id";
+$userResult = mysqli_query($con, $userSql);
+$user = mysqli_fetch_assoc($userResult);
+
 $sql = "SELECT PropertyID, Title, Address, City, State, Price, ImageOne, Bedrooms, Bathrooms, GarageSpace FROM properties WHERE 1=1";
 
 
@@ -82,9 +87,12 @@ $result = mysqli_query($con, $sql);
                 <li><a href="agents.php">Our Agents</a></li>
                 <li><a href="bookmarked.php">BookMarked</a></li>
             </ul>
-        </div>
-        <div class="nav-right">
-        <a href="logout.php" class="btn btn-outline-light">Logout</a>
+            </div>
+            <div class="nav-right">
+            <?php if ($user): ?>
+                <span class="navbar-text">Welcome, <?php echo htmlspecialchars($user['full_name']); ?>!</span>
+            <?php endif; ?>
+            <a href="logout.php" class="custom-logout-btn">Logout</a>
         </div>
     </nav>
 

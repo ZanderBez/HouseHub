@@ -8,6 +8,11 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 include 'database.php';
 
+$user_id = $_SESSION["user_id"];
+$userSql = "SELECT full_name FROM users WHERE UserID = $user_id";
+$userResult = mysqli_query($con, $userSql);
+$user = mysqli_fetch_assoc($userResult);
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove_bookmark'])) {
     $property_id = intval($_POST['property_id']);
     $delete_sql = "DELETE FROM bookmarks WHERE UserID = ? AND PropertyID = ?";
@@ -69,8 +74,11 @@ if (!$result) {
         </ul>
     </div>
     <div class="nav-right">
-    <a href="logout.php" class="btn btn-outline-light">Logout</a>
-    </div>
+            <?php if ($user): ?>
+                <span class="navbar-text">Welcome, <?php echo htmlspecialchars($user['full_name']); ?>!</span>
+            <?php endif; ?>
+            <a href="logout.php" class="custom-logout-btn">Logout</a>
+        </div>
 </nav>
 
 <div class="container">

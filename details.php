@@ -15,6 +15,11 @@ $user_id = $_SESSION['user_id'];
 
 include 'database.php';
 
+$user_id = $_SESSION["user_id"];
+$userSql = "SELECT full_name FROM users WHERE UserID = $user_id";
+$userResult = mysqli_query($con, $userSql);
+$user = mysqli_fetch_assoc($userResult);
+
 // Fetch property details
 $sql = "SELECT * FROM properties WHERE PropertyID = $property_id";
 $result = mysqli_query($con, $sql);
@@ -56,6 +61,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+
+// Handle review submission
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['review'])) {
+    $reviewText = mysqli_real_escape_string($con, $_POST['review']);
+    $rating = intval($_POST['rating']);
+
+    $insertReview = "INSERT INTO reviews (PropertyID, UserID, ReviewText, rating) VALUES ('$property_id', '$user_id', '$reviewText', '$rating')";
+    
+    if (mysqli_query($con, $insertReview)) {
+        echo "<div class='alert alert-success'>Review added successfully!</div>";
+    } else {
+        echo "<div class='alert alert-danger'>Failed to add review: " . mysqli_error($con) . "</div>";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -89,7 +108,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </ul>
     </div>
     <div class="nav-right">
-        <a href="logout.php" class="btn btn-outline-light">Logout</a>
+        <?php if ($user): ?>
+            <span class="navbar-text">Welcome, <?php echo htmlspecialchars($user['full_name']); ?>!</span>
+        <?php endif; ?>
+        <a href="logout.php" class="custom-logout-btn">Logout</a>
     </div>
 </nav>
 
@@ -174,11 +196,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <h2>Reviews</h2>
                 <div class="review-list">
                     <?php
-                        $reviewSql = "SELECT r.ReviewText, r.CreatedAt, u.full_name 
-                        FROM reviews r
-                        JOIN users u ON r.userID = u.UserID
-                        WHERE r.PropertyID = '$property_id'
-                        ORDER BY r.CreatedAt DESC";
+                        $reviewSql = "SELECT r.ReviewText, r.CreatedAt, u.full_name, r.rating 
+                                      FROM reviews r
+                                      JOIN users u ON r.userID = u.UserID
+                                      WHERE r.PropertyID = '$property_id'
+                                      ORDER BY r.CreatedAt DESC";
                         $reviewResult = mysqli_query($con, $reviewSql);
 
                         if (mysqli_num_rows($reviewResult) > 0) {
@@ -186,6 +208,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 echo "<div class='review-item'>";
                                 echo "<h5><strong>" . htmlspecialchars($review['full_name']) . "</strong> - " . htmlspecialchars($review['CreatedAt']) . "</h5>";
                                 echo "<p>" . htmlspecialchars($review['ReviewText']) . "</p>";
+                                echo "<div class='star-rating'>";
+                                for ($i = 1; $i <= 5; $i++) {
+                                    if ($i <= $review['rating']) {
+                                        echo "<i class='fas fa-star'></i>";
+                                    } else {
+                                        echo "<i class='far fa-star'></i>";
+                                    }
+                                }
+                                echo "</div>";
                                 echo "</div>";
                             }
                         } else {
@@ -196,6 +227,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="add-review">
                     <h3>Add a review</h3>
                     <form action="details.php?id=<?php echo $property_id; ?>" method="POST">
+                        <div class="rating">
+                            <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 stars"><i class="fas fa-star"></i></label>
+                            <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 stars"><i class="fas fa-star"></i></label>
+                            <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 stars"><i class="fas fa-star"></i></label>
+                            <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 stars"><i class="fas fa-star"></i></label>
+                            <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star"><i class="fas fa-star"></i></label>
+                        </div>
                         <textarea name="review" placeholder="Write your review here..." required></textarea>
                         <button type="submit">Submit</button>
                     </form>
@@ -244,7 +282,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <label for="buyerPhone">Phone Number:</label>
                         <input type="tel" id="buyerPhone" name="buyerPhone" class="form-control" required>
                     </div>
-                    <button type="submit" class="btn">Purchase</button>
+                    <button type="submit" class="btn btn-outline-dark">Purchase</button>
                 </form>
             </div>
         </div>

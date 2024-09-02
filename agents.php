@@ -6,6 +6,10 @@ if (!isset($_SESSION["user_id"])){
 }
 
 include 'database.php'; 
+$user_id = $_SESSION["user_id"];
+$userSql = "SELECT full_name FROM users WHERE UserID = $user_id";
+$userResult = mysqli_query($con, $userSql);
+$user = mysqli_fetch_assoc($userResult);
 
 $sql = "SELECT * FROM agents";
 $result = mysqli_query($con, $sql);
@@ -42,7 +46,10 @@ $result = mysqli_query($con, $sql);
             </ul>
         </div>
         <div class="nav-right">
-        <a href="logout.php" class="btn btn-outline-light">Logout</a>
+            <?php if ($user): ?>
+                <span class="navbar-text">Welcome, <?php echo htmlspecialchars($user['full_name']); ?>!</span>
+            <?php endif; ?>
+            <a href="logout.php" class="custom-logout-btn">Logout</a>
         </div>
     </nav>
 
