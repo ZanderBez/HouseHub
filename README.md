@@ -1,10 +1,12 @@
 <!-- Repository Information & Links-->
 <br />
 
-  ![GitHub repo size](https://img.shields.io/github/repo-size/ZanderBez/HouseHub?color=%000000)
-  ![GitHub watchers](https://img.shields.io/github/watchers/ZanderBez/HouseHub?color=%000000)
-  ![GitHub language count](https://img.shields.io/github/languages/count/ZanderBez/HouseHub?color=%000000)
-  ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ZanderBez/HouseHub?color=%000000)
+<p align="center">
+  <img src="https://img.shields.io/github/repo-size/ZanderBez/HouseHub?color=%000000" alt="GitHub repo size">
+  <img src="https://img.shields.io/github/watchers/ZanderBez/HouseHub?color=%000000" alt="GitHub watchers">
+  <img src="https://img.shields.io/github/languages/count/ZanderBez/HouseHub?color=%000000" alt="GitHub language count">
+  <img src="https://img.shields.io/github/languages/code-size/ZanderBez/HouseHub?color=%000000" alt="GitHub code size in bytes">
+</p>
 
 <!-- HEADER SECTION -->
 <h5 align="center" style="padding:0;margin:0;">Zander Bezuidenhout</h5>
