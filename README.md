@@ -10,8 +10,8 @@
 
 <!-- HEADER SECTION -->
 <h5 align="center" style="padding:0;margin:0;">Zander Bezuidenhout</h5>
-<h5 align="center" style="padding:0;margin:0;">Student Number: [Your Student Number]</h5>
-<h6 align="center">[DV 200]</h6>
+<h5 align="center" style="padding:0;margin:0;">Student Number: 221205</h5>
+<h6 align="center">DV 200</h6>
 </br>
 <p align="center">
   <a href="https://github.com/ZanderBez/HouseHub">
