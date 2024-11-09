@@ -1,4 +1,4 @@
-<!-- Repository Information & Links-->
+
 <br />
 
 <p align="center">
@@ -8,7 +8,7 @@
   <img src="https://img.shields.io/github/languages/code-size/ZanderBez/HouseHub?color=%000000" alt="GitHub code size in bytes">
 </p>
 
-<!-- HEADER SECTION -->
+
 <h5 align="center" style="padding:0;margin:0;">Zander Bezuidenhout</h5>
 <h5 align="center" style="padding:0;margin:0;">Student Number: 221205</h5>
 <h6 align="center">DV 200</h6>
@@ -34,7 +34,7 @@
   <a href="https://github.com/ZanderBez/HouseHub/issues">Request Feature</a>
 </p>
 
-<!-- TABLE OF CONTENTS -->
+
 ## Table of Contents
 
 * [About the Project](#about-the-project)
@@ -47,6 +47,7 @@
 * [Concept Process](#concept-process)
    * [Ideation](#ideation)
    * [Wireframes](#wireframes)
+    * [User-flow](#user-flow)
 * [Development Process](#development-process)
    * [Implementation Process](#implementation-process)
         * [Highlights](#highlights)
@@ -65,9 +66,9 @@
 * [Contact](#contact)
 * [Acknowledgements](#acknowledgements)
 
-<!--PROJECT DESCRIPTION-->
+
 ## About the Project
-<!-- header image of project -->
+
 ![Logo Screenshot](assets/Layer_1.png)
 
 ### Project Description
@@ -84,7 +85,7 @@ HomeHub is a real estate web application developed to simplify property browsing
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
 [![xampp]( https://img.shields.io/badge/xampp-750000?style=for-the-badge&logo=xampp&logoColor=#FB7A24)](https://www.php.net/docs.php)
 
-<!-- GETTING STARTED -->
+
 ## Getting Started
 
 The following instructions will guide you through setting up your local copy of the project for development and testing purposes.
@@ -142,7 +143,7 @@ The following instructions will guide you through setting up your local copy of 
 - **Agent Profiles**: Contact information and service regions.
 - **Property Status**: Real-time updates (Available, Pending, Sold).
 
-<!-- CONCEPT PROCESS -->
+
 ## Concept Process
 
 The concept involved creating a platform that connects users, agents, and admins seamlessly, supporting property searches, listings, and transactions.
@@ -160,7 +161,10 @@ Brainstorming sessions highlighted the need for user authentication, role-based 
 ![Bookmark Page Screenshot](assets/bookmark.png)
 ![Agent Page Screenshot](assets/agents.png)
 
-<!-- DEVELOPMENT PROCESS -->
+### User Flow
+
+![User Flow Screenshot](assets/User%20Flow%20Real%20estate.png)
+
 ## Development Process
 
 ### Implementation Process
@@ -187,14 +191,14 @@ Peer reviews were conducted with feedback highlighting the user-friendly design 
 
 Basic unit tests were conducted to ensure core functionalities like user authentication and property searches were working as expected. Future plans include comprehensive tests for database interactions and user role permissions.
 
-<!-- FUTURE IMPLEMENTATION -->
+
 ### Future Implementation
 
 * Add real-time chat for user-agent communication.
 * Enhanced property filtering options.
 * Implement user profile customization features.
 
-<!-- FINAL OUTCOME -->
+
 ## Final Outcome
 
 ### Mockups
@@ -218,12 +222,11 @@ Basic unit tests were conducted to ensure core functionalities like user authent
 
 [View Demonstration](https://drive.google.com/file/d/1hGlat3ccmjpy3amUTrSk7GGyNtUv0dFS/view?usp=sharing)
 
-<!-- CONCLUSION -->
 ## Conclusion
 
 HomeHub provides an efficient and user-friendly solution for property browsing, bookmarking, and purchases. The platform’s role-based access ensures that all user types have tailored functionalities, making it a comprehensive tool for real estate management.
 
-<!-- ROADMAP -->
+
 ## Roadmap
 
 Future updates include:
@@ -233,7 +236,7 @@ Future updates include:
 
 See the [open issues](https://github.com/ZanderBez/HouseHub/issues) for a list of proposed features and known issues.
 
-<!-- CONTRIBUTING -->
+
 ## Contributing
 
 Contributions are what make the open-source community so inspiring. Any contributions are **greatly appreciated**.
@@ -244,23 +247,22 @@ Contributions are what make the open-source community so inspiring. Any contribu
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<!-- AUTHORS -->
+
 ## Authors
 
 * **Zander Bezuidenhout** - [ZanderBez](https://github.com/ZanderBez)
 
-<!-- LICENSE -->
+
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
-<!-- CONTACT -->
 ## Contact
 
 * **Zander Bezuidenhout** - [bezuidenhoutzander8@gmail.com](mailto:bezuidenhoutzander8@gmail.com)
 * **Project Link** - [HomeHub](https://github.com/ZanderBez/HouseHub)
 
-<!-- ACKNOWLEDGEMENTS -->
+
 ## Acknowledgements
 
 * [PHP Documentation](https://www.php.net/docs.php)
