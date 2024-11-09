@@ -46,6 +46,7 @@
 * [Features and Functionality](#features-and-functionality)
 * [Concept Process](#concept-process)
    * [Ideation](#ideation)
+   * [ER Diagram](#er-diagram)
    * [Wireframes](#wireframes)
     * [User-flow](#user-flow)
 * [Development Process](#development-process)
@@ -151,6 +152,10 @@ The concept involved creating a platform that connects users, agents, and admins
 ### Ideation
 
 Brainstorming sessions highlighted the need for user authentication, role-based access, and a mortgage calculator.
+
+### ER Diagram
+
+![ER Diagram Screenshot](assets/ER%20diagram%20for%20real%20estate.png)
 
 ### Wireframes
 
