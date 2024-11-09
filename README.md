@@ -47,7 +47,6 @@
 * [Concept Process](#concept-process)
    * [Ideation](#ideation)
    * [Wireframes](#wireframes)
-   * [User-flow](#user-flow)
 * [Development Process](#development-process)
    * [Implementation Process](#implementation-process)
         * [Highlights](#highlights)
@@ -160,10 +159,6 @@ Brainstorming sessions highlighted the need for user authentication, role-based 
 ![Property Page Screenshot](assets/Property.png)
 ![Bookmark Page Screenshot](assets/bookmark.png)
 ![Agent Page Screenshot](assets/agents.png)
-
-### User-flow
-
-Outlined user journeys, detailing paths from account creation to property purchases.
 
 <!-- DEVELOPMENT PROCESS -->
 ## Development Process
