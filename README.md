@@ -1,26 +1,79 @@
-![Logo Screenshot](assets/Layer_1.png "Logo Screenshot")
+<!-- Repository Information & Links-->
+<br />
 
-# Real Estate Web Application
+  ![GitHub repo size](https://img.shields.io/github/repo-size/ZanderBez/HouseHub?color=%000000)
+  ![GitHub watchers](https://img.shields.io/github/watchers/ZanderBez/HouseHub?color=%000000)
+  ![GitHub language count](https://img.shields.io/github/languages/count/ZanderBez/HouseHub?color=%000000)
+  ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ZanderBez/HouseHub?color=%000000)
 
-This Real Estate Web Application is called homehub it's a dynamic platform that allows users to browse, bookmark, and purchase properties. Agents can list new properties, and administrators can manage property approvals. The application also includes features like a mortgage calculator and reviews for properties.
+<!-- HEADER SECTION -->
+<h5 align="center" style="padding:0;margin:0;">Zander Bezuidenhout</h5>
+<h5 align="center" style="padding:0;margin:0;">Student Number: [Your Student Number]</h5>
+<h6 align="center">[DV 200]</h6>
+</br>
+<p align="center">
+  <a href="https://github.com/ZanderBez/HouseHub">
+    <img src="assets/Layer_1.png" alt="Logo">
+  </a >
+</p>
+  
+<h3 align="center">HomeHub Real Estate</h3>
+<h4 align="center">Web Application</h4>
 
+<p align="center">
+  Your dynamic platform for property browsing, bookmarking, and purchasing.<br>
+  <a href="https://github.com/ZanderBez/HouseHub"><strong>Explore the docs »</strong></a>
+  <br />
+  <br />
+  <a href="https://drive.google.com/file/d/1hGlat3ccmjpy3amUTrSk7GGyNtUv0dFS/view?usp=sharing">View Demo</a>
+  ·
+  <a href="https://github.com/ZanderBez/HouseHub/issues">Report Bug</a>
+  ·
+  <a href="https://github.com/ZanderBez/HouseHub/issues">Request Feature</a>
+</p>
+
+<!-- TABLE OF CONTENTS -->
 ## Table of Contents
 
-1. [Built With](#built-with)
-2. [Features](#features)
-3. [UI Design](#ui-design)
-4. [Installation](#installation)
-5. [MockUps](#mockups)
-6. [Usage](#usage)
-7. [Folder Structure](#folder-structure)
-8. [Database Structure](#database-structure)
-9. [Technologies Used](#technologies-used)
-10. [Contributing](#contributing)
-11. [Demo Video](#demo-video)
-12. [License](#license)
-13. [Contact](#contact)
+* [About the Project](#about-the-project)
+  * [Project Description](#project-description)
+  * [Built With](#built-with)
+* [Getting Started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [How to install](#how-to-install)
+* [Features and Functionality](#features-and-functionality)
+* [Concept Process](#concept-process)
+   * [Ideation](#ideation)
+   * [Wireframes](#wireframes)
+   * [User-flow](#user-flow)
+* [Development Process](#development-process)
+   * [Implementation Process](#implementation-process)
+        * [Highlights](#highlights)
+        * [Challenges](#challenges)
+   * [Reviews and Testing](#peer-reviews)
+        * [Feedback from Reviews](#feedback-from-reviews)
+        * [Unit Tests](#unit-tests)
+   * [Future Implementation](#future-implementation)
+* [Final Outcome](#final-outcome)
+    * [Mockups](#mockups)
+    * [Video Demonstration](#video-demonstration)
+* [Conclusion](#conclusion)
+* [Roadmap](#roadmap)
+* [Contributing](#contributing)
+* [License](#license)
+* [Contact](#contact)
+* [Acknowledgements](#acknowledgements)
 
-## Built With 
+<!--PROJECT DESCRIPTION-->
+## About the Project
+<!-- header image of project -->
+![Logo Screenshot](assets/Layer_1.png)
+
+### Project Description
+
+HomeHub is a real estate web application developed to simplify property browsing and transactions. The platform supports user authentication, agent listings, property reviews, and a built-in mortgage calculator. Administrators can manage property approvals, ensuring a seamless and secure experience for all user roles.
+
+### Built With
 
 [![Php]( https://img.shields.io/badge/PHP-001440?style=for-the-badge&logo=php&logoColor=#777BB4)](https://www.php.net/docs.php)
 [![MySQL]( https://img.shields.io/badge/MYSQL-5B5B5B?style=for-the-badge&logo=mysql&logoColor=white)](https://www.php.net/docs.php)
@@ -30,50 +83,19 @@ This Real Estate Web Application is called homehub it's a dynamic platform that 
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
 [![xampp]( https://img.shields.io/badge/xampp-750000?style=for-the-badge&logo=xampp&logoColor=#FB7A24)](https://www.php.net/docs.php)
 
-## Features
+<!-- GETTING STARTED -->
+## Getting Started
 
-- **User Authentication**: Users can register, log in, and manage their accounts.
-- **Property Listings**: Users can view details of properties, including images, descriptions, and agent information.
-- **Bookmarking**: Users can bookmark properties for easy access later.
-- **Purchasing Properties**: Users can initiate the purchase of a property directly from the platform.
-- **Mortgage Calculator**: Integrated calculator to estimate mortgage payments based on loan amount, interest rate, and term.
-- **Property Reviews**: Users can leave reviews for properties they have interacted with.
-- **Role-Based Access**: Different views and functionalities for regular users, agents, and administrators.
-- **Agent Profiles**: Detailed agent profiles with contact information and region served.
-- **Property Status**: Real-time status updates on property availability (Available, Pending, Sold).
-
-## UI Design 
-
-
-### Sign Up Page
-![SignUp Screenshot](assets/signUp.png "SignUp Screenshot")
-
-### Log In Page
-![LogIn Screenshot](assets/LogIn.png "LogIn Screenshot")
-
-### Home Page 
-![Homepage Screenshot](assets/home.png "Homepage Screenshot")
-
-### Property Page 
-![Homepage Screenshot](assets/Property.png "Homepage Screenshot")
-
-### Bookmark Page 
-![Homepage Screenshot](assets/bookmark.png "Homepage Screenshot")
-
-### Agent Page 
-![Agent Screenshot](assets/agents.png "Agent Screenshot")
-
-## Installation
-
+The following instructions will guide you through setting up your local copy of the project for development and testing purposes.
 
 ### Prerequisites
 
-- [XAMPP](https://www.apachefriends.org/index.html) or any other local server environment.
-- PHP 7.x or later
-- MySQL or MariaDB database
-- Composer (optional for dependency management)
+- [XAMPP](https://www.apachefriends.org/index.html) or any local server environment.
+- PHP 7.x or later.
+- MySQL or MariaDB database.
+- Composer (optional for dependency management).
 
-### Steps
+### How to install
 
 1. **Clone the repository**:
     ```bash
@@ -83,19 +105,18 @@ This Real Estate Web Application is called homehub it's a dynamic platform that 
     ```bash
     cd real-estate-web-app
     ```
-3. **Move the project to your XAMPP or other server environment’s `htdocs` folder**:
+3. **Move the project to your XAMPP `htdocs` folder**:
     ```bash
     mv real-estate-web-app /path/to/xampp/htdocs/
     ```
 4. **Set up the database**:
-    - Import the database structure from `real_estate.sql` using phpMyAdmin or the MySQL command line:
+    - Import `real_estate.sql` using phpMyAdmin or the MySQL command line:
       ```bash
       mysql -u root -p real_estate < /path/to/real_estate.sql
       ```
-    - Alternatively, you can create the tables manually using the provided SQL queries.
-
-5. **Update Database Configuration**:
-    - Modify the `database.php` file with your database credentials:
+    - Alternatively, create the tables manually using provided SQL queries.
+5. **Update database configuration**:
+    Modify `database.php`:
     ```php
     $hostName = "localhost";
     $dbUser = "root";
@@ -103,72 +124,151 @@ This Real Estate Web Application is called homehub it's a dynamic platform that 
     $dbName = "real_estate";
     ```
 6. **Start the server**:
-    - Open XAMPP and start Apache and MySQL services.
+    Start Apache and MySQL in XAMPP.
+7. **Access the application**:
+    Navigate to `http://localhost/real-estate/login.php`.
 
-7. **Access the Application**:
-    - Open your browser and navigate to `http://localhost/real-estate/login.php`.
+## Features and Functionality
 
-## MockUps
+### Core Features
+- **User Authentication**: Register, log in, and manage user accounts.
+- **Property Listings**: Detailed views of properties, images, and agent info.
+- **Bookmarking**: Save properties for later.
+- **Purchasing Properties**: Initiate purchases.
+- **Mortgage Calculator**: Estimate monthly payments.
+- **Property Reviews**: User feedback on properties.
+- **Role-Based Access**: Different views for users, agents, and admins.
+- **Agent Profiles**: Contact information and service regions.
+- **Property Status**: Real-time updates (Available, Pending, Sold).
 
-### Sign Up Page
-![SignUpMock Screenshot](assets/SignUPMockup.png "SignUpMock Screenshot")
+<!-- CONCEPT PROCESS -->
+## Concept Process
 
-### Log In Page
-![LogInMock Screenshot](assets/LogInMockup.png "LogInMock Screenshot")
+The concept involved creating a platform that connects users, agents, and admins seamlessly, supporting property searches, listings, and transactions.
 
-### Home Page 
-![HomepageMock Screenshot](assets/HomeMockup.png "HomepageMock Screenshot")
+### Ideation
 
-### Details Page 
-![DetailsPageMock Screenshot](assets/DetailsMockup.png "DetailsPageMock Screenshot")
+Brainstorming sessions highlighted the need for user authentication, role-based access, and a mortgage calculator.
 
-### Properties Page 
-![PropertiesPageMock Screenshot](assets/PropertyMockup.png "PropertiesPageMock Screenshot")
+### Wireframes
 
-## Usage
+![SignUp Screenshot](assets/signUp.png)
+![LogIn Screenshot](assets/LogIn.png)
+![Homepage Screenshot](assets/home.png)
+![Property Page Screenshot](assets/Property.png)
+![Bookmark Page Screenshot](assets/bookmark.png)
+![Agent Page Screenshot](assets/agents.png)
 
-### User Roles
+### User-flow
 
-- **Registered Users**: Can bookmark properties, leave reviews, and initiate property purchases.
-- **Agents**: Can list new properties for sale.
-- **Administrators**: Can manage property approvals and oversee the entire platform.
+Outlined user journeys, detailing paths from account creation to property purchases.
 
-### Features
+<!-- DEVELOPMENT PROCESS -->
+## Development Process
 
-- **Browse Properties**: Navigate to the properties page to see the available listings.
-- **Bookmark Properties**: Save your favorite properties for quick access later.
-- **Check Availability**: Use the "Check for Availability" button to see the current status of a property.
-- **Purchase Property**: Click on "Buy Property" to fill in your details and initiate the purchase.
-- **Mortgage Calculator**: Use the built-in mortgage calculator to estimate your monthly payments.
+### Implementation Process
 
-## Technologies Used
+* Created a modular structure using PHP for backend logic.
+* Integrated MySQL for data storage.
+* Designed responsive pages using Bootstrap and custom CSS.
 
-- **Front-end**:
-  - HTML
-  - CSS (Bootstrap)
-  - JavaScript (Bootstrap and custom scripts)
+#### Highlights
+* Successful implementation of role-based user management.
+* Integrated mortgage calculator functionality.
 
-- **Back-end**:
-  - PHP
-  - MySQL/MariaDB
+#### Challenges
+* Managing complex SQL queries.
+* Optimizing image uploads and property detail rendering.
 
-- **Other**:
-  - Apache (via XAMPP)
-  - phpMyAdmin (for database management)
+### Reviews & Testing
 
+#### Feedback from Reviews
+
+Peer reviews were conducted with feedback highlighting the user-friendly design and efficient property search feature. Suggestions were made to include additional filtering options and improve the performance of image uploads.
+
+#### Unit Tests
+
+Basic unit tests were conducted to ensure core functionalities like user authentication and property searches were working as expected. Future plans include comprehensive tests for database interactions and user role permissions.
+
+<!-- FUTURE IMPLEMENTATION -->
+### Future Implementation
+
+* Add real-time chat for user-agent communication.
+* Enhanced property filtering options.
+* Implement user profile customization features.
+
+<!-- FINAL OUTCOME -->
+## Final Outcome
+
+### Mockups
+
+#### Sign Up Page
+![SignUpMock Screenshot](assets/SignUPMockup.png)
+
+#### Log In Page
+![LogInMock Screenshot](assets/LogInMockup.png)
+
+#### Home Page
+![HomepageMock Screenshot](assets/HomeMockup.png)
+
+#### Details Page
+![DetailsPageMock Screenshot](assets/DetailsMockup.png)
+
+#### Properties Page
+![PropertiesPageMock Screenshot](assets/PropertyMockup.png)
+
+### Video Demonstration
+
+[View Demonstration](https://drive.google.com/file/d/1hGlat3ccmjpy3amUTrSk7GGyNtUv0dFS/view?usp=sharing)
+
+<!-- CONCLUSION -->
+## Conclusion
+
+HomeHub provides an efficient and user-friendly solution for property browsing, bookmarking, and purchases. The platform’s role-based access ensures that all user types have tailored functionalities, making it a comprehensive tool for real estate management.
+
+<!-- ROADMAP -->
+## Roadmap
+
+Future updates include:
+- Implementing a real-time chat feature.
+- Adding more advanced search filters.
+- Developing user profile customization options.
+
+See the [open issues](https://github.com/ZanderBez/HouseHub/issues) for a list of proposed features and known issues.
+
+<!-- CONTRIBUTING -->
 ## Contributing
 
-If you'd like to contribute to this project, please fork the repository and use a feature branch. Pull requests are warmly welcome.
+Contributions are what make the open-source community so inspiring. Any contributions are **greatly appreciated**.
 
-## Demo Video
-[Demo Video](https://drive.google.com/file/d/1hGlat3ccmjpy3amUTrSk7GGyNtUv0dFS/view?usp=sharing)
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
+<!-- AUTHORS -->
+## Authors
+
+* **Zander Bezuidenhout** - [ZanderBez](https://github.com/ZanderBez)
+
+<!-- LICENSE -->
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+Distributed under the MIT License. See `LICENSE` for more information.
 
+<!-- CONTACT -->
 ## Contact
 
-- **Name**: Zander Bezuidenhout
-- **Email**: bezuidenhoutzander8@gmail.com
-- **GitHub**: [https://github.com/ZanderBez](https://github.com/ZanderBez)
+* **Zander Bezuidenhout** - [bezuidenhoutzander8@gmail.com](mailto:bezuidenhoutzander8@gmail.com)
+* **Project Link** - [HomeHub](https://github.com/ZanderBez/HouseHub)
+
+<!-- ACKNOWLEDGEMENTS -->
+## Acknowledgements
+
+* [PHP Documentation](https://www.php.net/docs.php)
+* [MySQL](https://www.mysql.com/)
+* [Bootstrap](https://getbootstrap.com/)
+* [OpenWeather API](https://openweathermap.org/)
+* [XAMPP](https://www.apachefriends.org/index.html)
+* [PHP MyAdmin](https://www.phpmyadmin.net/)
